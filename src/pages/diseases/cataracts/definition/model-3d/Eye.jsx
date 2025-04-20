@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei'
 export function Eye(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/eye-cataracts1.glb')
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} scale={[5.5, 5.5, 5.5]}>
       <mesh
         castShadow
         receiveShadow
