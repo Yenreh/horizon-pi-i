@@ -3,6 +3,7 @@ import "./definition.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Eye } from "./model-3d/Eye";
+import Lights from "./Lights/Lights";
 
 export default function definition() {
   return (
@@ -43,11 +44,17 @@ export default function definition() {
 
         <div className="diagram-section">
           <div className="canvas-wrapper">
-            <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[0, 0, 5]} />
+            <Canvas camera={{ position: [0, 1, 3]}} shadows>
               <Suspense fallback={null}>
-                <Eye />
+                <Lights />
+                <Eye position={[0, 0, 0]} />
+
+                <mesh receiveShadow position={[0, -1, 0]}>
+                  <planeGeometry args={[10, 10]} />
+                  <shadowMaterial transparent opacity={0.3} />
+                </mesh>
+
+
               </Suspense>
               <OrbitControls />
             </Canvas>
