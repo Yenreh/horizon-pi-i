@@ -9,6 +9,7 @@ const Home = () => {
     <div>
       <h1>Inicio</h1>
       <button>Ver más enfermedades</button>
+      <a href="/cataratas">Cataratas</a>
     </div>
   );
 };
