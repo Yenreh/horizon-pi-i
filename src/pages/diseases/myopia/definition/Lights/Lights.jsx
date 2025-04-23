@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unknown-property */
 import { useRef } from 'react'
-import { SpotLight, SoftShadows, useHelper } from '@react-three/drei'
-import { DirectionalLightHelper, SpotLightHelper } from 'three';
+import { useHelper } from '@react-three/drei'
+import { DirectionalLightHelper } from 'three';
 
 export default function Lights() {
     const directionalLightRef = useRef();
