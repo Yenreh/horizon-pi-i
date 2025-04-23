@@ -1,0 +1,176 @@
+/* eslint-disable react/no-unknown-property */
+import { useRef } from 'react'
+import { useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+
+export function Eye(props) {
+  const { nodes, materials } = useGLTF('/models-3d/myopia/eye-myopia.glb')
+  const groupRef = useRef()
+
+  useFrame(({ clock }) => {
+    groupRef.current.rotation.y = Math.sin(clock.getElapsedTime()) * 0.2
+  })
+
+    return (
+        <group ref={groupRef} {...props} dispose={null} scale={[100, 100, 100]}>
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeArtery.geometry}
+                material={materials.EyeArteryMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeCornea.geometry}
+                material={materials.EyeCorneaMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSupportTop.geometry}
+                material={materials.EyeSupportTopMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSupportBot.geometry}
+                material={materials.EyeSupportBotMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSupportLeft.geometry}
+                material={materials.EyeSupportLeftMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeJoinOut.geometry}
+                material={materials.EyeScleraMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeJoinInside.geometry}
+                material={materials.EyeJoinInsideMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeIris.geometry}
+                material={materials.EyeIrisMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeLent.geometry}
+                material={materials.EyeLentMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeRetina1.geometry}
+                material={materials.EyeRetinaMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeRetina2.geometry}
+                material={materials.EyeRetinaMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeRetina3.geometry}
+                material={materials.EyeRetinaMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeRetina4.geometry}
+                material={materials.EyeRetinaMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeRetina5.geometry}
+                material={materials.EyeRetinaMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeRetina6.geometry}
+                material={materials.EyeRetinaMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeRetina7.geometry}
+                material={materials.EyeRetinaMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeRetina8.geometry}
+                material={materials.EyeRetinaMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSclera1.geometry}
+                material={materials.EyeScleraMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSclera2.geometry}
+                material={materials.EyeScleraMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSclera3.geometry}
+                material={materials.EyeScleraMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSclera4.geometry}
+                material={materials.EyeScleraMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSclera5.geometry}
+                material={materials.EyeScleraMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSclera6.geometry}
+                material={materials.EyeScleraMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSuspensoryLigament1.geometry}
+                material={materials.EyeSuspensoryLigamentMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeSuspensoryLigamen2.geometry}
+                material={materials.EyeSuspensoryLigamentMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.EyeArtery2.geometry}
+                material={materials.EyeArtery2Material}
+            />
+        </group>
+    )
+}
+
+useGLTF.preload('/models-3d/myopia/eye-myopia.glb')
