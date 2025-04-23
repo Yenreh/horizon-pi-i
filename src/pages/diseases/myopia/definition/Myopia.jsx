@@ -4,7 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Eye } from "./model-3d/Eye";
 import Lights from "./Lights/Lights";
-import "./myopia.css";
+import "./Myopia.css";
 
 export default function Myopia() {
   return (
@@ -38,7 +38,7 @@ export default function Myopia() {
                 <OrbitControls />
               </Canvas>
             </div>
-          <div className="desease-text">
+          <div className="desease-text-definition">
             <p>
               La miopía es un error refractivo del ojo que provoca visión borrosa de
               los objetos lejanos, mientras que los cercanos se ven con claridad. Esto
