@@ -24,12 +24,13 @@
     position: absolute;
     top: 30%;
     right: 0;
-    background: rgba(var(--color-5-rgb), 0.7);
+    background: rgba(var(--color-6-rgb), 0.5);
     color: var(--color-3);
     padding: 0.5rem 1rem;
     font-weight: bold;
     font-size: 2rem;
-    width: 15%;
+    width: 20%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .desease-navigation-align-right {
     display: flex;
