@@ -107,7 +107,9 @@
     transition: transform 0.3s ease, background 0.3s ease;
     z-index: 10;
 }
-.carousel-btn:hover {
+.carousel-btn:hover,
+.carousel-btn:focus,
+.carousel-btn:active {
     background: transparent;
     transform: translateY(-50%) scale(1.1);
 }
@@ -174,7 +176,7 @@
     .carousel-btn {
         width: 30px;
         height: 30px;
-        font-size: 1.2rem;
+        font-size: 2.5rem;
     }
     .experience-cards .card {
         width: 100%;
@@ -185,4 +187,21 @@
     .experience-cards button {
         width: 90%
     }
+    .carousel-wrapper {
+        width: var(--card-width);
+        margin: 0 auto;
+    }
+
+    .carousel-container {
+        gap: calc(var(--card-gap) * 3);
+    }
+
+    .carousel-container .card {
+        flex: 0 0 var(--card-width);
+    }
+
+    .carousel-btn.left  { left: 0.25rem; }
+    .carousel-btn.right { right: 0.25rem; }
+
+
 }

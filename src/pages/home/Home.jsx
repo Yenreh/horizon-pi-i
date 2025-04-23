@@ -1,46 +1,63 @@
+import { useRef, useEffect, useCallback } from "react";
 import "./Home.css";
 
 const Home = () => {
-    const scrollCarousel = (direction) => {
-        const container = document.getElementById("carousel");
-        const cards = container.children;
-        const cardWidth = cards[0].offsetWidth;
-        const gap = 16; // 1rem en pixeles
-        const scrollAmount = cardWidth + gap;
+    const carouselRef = useRef(null);
+    const gap = 16; // px, same as CSS var(--card-gap)
 
-        // Deshabilitar transición temporalmente para reposicionamiento
-        container.style.transition = 'none';
+    // Function to update classes based on center index
+    const updateClasses = useCallback(() => {
+        const container = carouselRef.current;
+        if (!container) return;
+        const cards = Array.from(container.children);
+        cards.forEach((card, idx) => {
+            card.classList.toggle("highlighted", idx === 1);
+            card.classList.toggle("disabled", idx !== 1);
+        });
+    }, []);
 
-        if (direction === "right") {
-            // Mover primer elemento al final
-            container.appendChild(cards[0]);
-            container.style.transform = `translateX(-${scrollAmount}px)`;
-            // Forzar reflow
-            void container.offsetWidth;
-            // Aplicar transición suave
-            container.style.transition = 'transform 0.5s ease-in-out';
-            container.style.transform = 'translateX(0)';
-        } else {
-            // Mover último elemento al principio
-            container.insertBefore(cards[cards.length - 1], cards[0]);
-            container.style.transform = `translateX(-${scrollAmount}px)`;
-            // Forzar reflow
-            void container.offsetWidth;
-            // Aplicar transición suave
-            container.style.transition = 'transform 0.5s ease-in-out';
-            container.style.transform = 'translateX(0)';
-        }
+    // Carousel scroll/rotate
+    const scrollCarousel = useCallback(
+        (direction) => {
+            const container = carouselRef.current;
+            if (!container) return;
+            const cards = container.children;
+            if (cards.length === 0) return;
 
-        // Actualizar clases después de la transición
-        setTimeout(() => {
-            const middleIndex = 1; // El segundo elemento siempre será el central
-            Array.from(cards).forEach((card, index) => {
-                card.classList.toggle('highlighted', index === middleIndex);
-                card.classList.toggle('disabled', index !== middleIndex);
-            });
-        }, 50);
-    };
+            const first = cards[0];
+            const last = cards[cards.length - 1];
+            const cardWidth = first.offsetWidth;
+            const scrollAmount = cardWidth + gap;
 
+            // Apply transition and transform
+            container.style.transition = "transform 0.5s ease-in-out";
+            container.style.transform = direction === "right"
+                ? `translateX(-${scrollAmount}px)`
+                : `translateX(${scrollAmount}px)`;
+
+            const onTransitionEnd = () => {
+                container.style.transition = "none";
+                container.style.transform = "none";
+
+                if (direction === "right") {
+                    container.appendChild(first);
+                } else {
+                    container.insertBefore(last, first);
+                }
+
+                updateClasses();
+                container.removeEventListener("transitionend", onTransitionEnd);
+            };
+
+            container.addEventListener("transitionend", onTransitionEnd);
+        },
+        [updateClasses]
+    );
+
+    // Initialize classes on mount
+    useEffect(() => {
+        updateClasses();
+    }, [updateClasses]);
 
     return (
         <div className="home-container">
@@ -57,8 +74,12 @@ const Home = () => {
             {/* Intro Section */}
             <section className="intro-section gradient-bg">
                 <h2>Expande tus fronteras sobre las enfermedades que afectan tu salud ocular</h2>
-                <p className="align-right">En Horizon, nos dedicamos a brindarte información precisa y actualizada sobre las enfermedades oculares. Nuestro objetivo es ayudarte a comprender mejor tu salud ocular y empoderarte para tomar decisiones informadas.</p>
-                <p className="align-left">Ya sea que estés buscando información sobre síntomas, tratamientos o prevención, estamos aquí para guiarte en cada paso del camino. Nuestro equipo de expertos trabaja arduamente para ofrecerte contenido de calidad y recursos útiles.</p>
+                <p className="align-right">
+                    En Horizon, nos dedicamos a brindarte información precisa y actualizada sobre las enfermedades oculares. Nuestro objetivo es ayudarte a comprender mejor tu salud ocular y empoderarte para tomar decisiones informadas.
+                </p>
+                <p className="align-left">
+                    Ya sea que estés buscando información sobre síntomas, tratamientos o prevención, estamos aquí para guiarte en cada paso del camino. Nuestro equipo de expertos trabaja arduamente para ofrecerte contenido de calidad y recursos útiles.
+                </p>
                 <button className="learn-more-btn">Aprende más</button>
             </section>
 
@@ -67,40 +88,39 @@ const Home = () => {
                 <h3>Comienza a explorar las enfermedades</h3>
                 <div className="carousel-wrapper">
                     <button className="carousel-btn left" onClick={() => scrollCarousel("left")}>‹</button>
-                    <div className="carousel-container" id="carousel">
-                        <div className="card disabled">
-                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 3" />
+                    <div className="carousel-container" id="carousel" ref={carouselRef}>
+                        <div className="card" key="1">
+                            <img src="/images/home/card-eye-desease.webp" alt="Desprendimiento de retina" />
                             <div className="card-content">
                                 <h4>Desprendimiento de retina</h4>
-                                <p>Explora las relacionadas a al desprendimiento de retina: síntomas, estadísticas y prevención</p>
+                                <p>Explora lo relacionado al desprendimiento de retina: síntomas, estadísticas y prevención</p>
                                 <button><a href="">Comenzar</a></button>
                             </div>
                         </div>
-                        <div className="card highlighted">
-                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 2" />
+                        <div className="card" key="2">
+                            <img src="/images/home/card-eye-desease.webp" alt="Cataratas" />
                             <div className="card-content">
                                 <h4>Cataratas</h4>
-                                <p>Explora las relacionadas a la Enfermedad 2: síntomas, estadísticas y prevención</p>
+                                <p>Explora lo relacionado a las cataratas: síntomas, estadísticas y prevención</p>
                                 <button><a href="/cataratas">Comenzar</a></button>
                             </div>
                         </div>
-                        <div className="card disabled">
-                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 1" />
+                        <div className="card" key="3">
+                            <img src="/images/home/card-eye-desease.webp" alt="Miopía" />
                             <div className="card-content">
                                 <h4>Miopía</h4>
-                                <p>Explora las relacionadas a la miopía: síntomas, estadísticas y prevención</p>
+                                <p>Explora lo relacionado a la miopía: síntomas, estadísticas y prevención</p>
                                 <button><a href="/miopia">Comenzar</a></button>
                             </div>
                         </div>
-                        <div className="card disabled">
+                        <div className="card" key="4">
                             <img src="/images/home/card-eye-desease.webp" alt="Conjuntivitis" />
                             <div className="card-content">
                                 <h4>Conjuntivitis</h4>
-                                <p>Explora las relacionadas a la conjuntivitis: síntomas, estadísticas y prevención</p>
+                                <p>Explora lo relacionado a la conjuntivitis: síntomas, estadísticas y prevención</p>
                                 <button><a href="/conjuntivitis">Comenzar</a></button>
                             </div>
                         </div>
-
                     </div>
                     <button className="carousel-btn right" onClick={() => scrollCarousel("right")}>›</button>
                 </div>
