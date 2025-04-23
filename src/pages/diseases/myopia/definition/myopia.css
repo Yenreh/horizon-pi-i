@@ -26,8 +26,10 @@
     font-weight: bold;
     font-size: 2.5rem;
 }
-.desease-navigation{
-  margin: 2rem 0;
+.desease-navigation-align-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .desease-nav-pill-right {
@@ -39,7 +41,7 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-weight: 500;
-    float: left;
+    margin: 2rem 0;
 }
 
 .desease-nav-pill-left {
@@ -51,7 +53,7 @@
     padding: 0.5rem 1rem;
     min-width: 15%;
     font-weight: 500;
-    float: right;
+    margin: 2rem 0;
 }
 
 .desease-nav-pill:hover {
@@ -59,23 +61,22 @@
 }
 
 .desease-content {
-  display: flex;
-  gap: 2rem;
-  padding: 1rem;
-  flex-direction: row;
-  width: 100%;
-  padding-inline: 3rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .desease-canvas-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 30%;
 }
 
 .desease-text{
-  width: 35%;
+  width: 40%;
 }
 
 
@@ -83,5 +84,13 @@
     .desease-content {
         flex-direction: column;
         align-items: center;
+    }
+    .desease-nav-pill-left,
+    .desease-nav-pill-right{
+        width: 35%;
+    }
+    .desease-text,
+    .desease-canvas-wrapper{
+        width: 100%;
     }
 }
