@@ -8,11 +8,11 @@ export function Eye(props) {
   const groupRef = useRef()
 
   useFrame(({ clock }) => {
-    groupRef.current.rotation.y = Math.sin(clock.getElapsedTime()) * 0.2
+    groupRef.current.rotation.y = Math.sin(clock.getElapsedTime()) * 0.4
   })
 
     return (
-        <group ref={groupRef} {...props} dispose={null} scale={[100, 100, 100]}>
+        <group ref={groupRef} {...props} dispose={null} scale={[100, 100, 100]} rotation={[Math.PI, 0, 0]}>
             <mesh
                 castShadow
                 receiveShadow
