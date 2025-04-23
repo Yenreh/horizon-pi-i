@@ -49,29 +49,30 @@ const Home = () => {
                     <button className="carousel-btn left" onClick={() => scrollCarousel("left")}>‹</button>
                     <div className="carousel-container" id="carousel">
                         <div className="card disabled">
-                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 1" />
-                            <h4>Enfermedad 1</h4>
-                            <p>Explora las relacionadas a la Enfermedad 1: síntomas, estadísticas y prevención</p>
-                            <button>Comenzar</button>
+                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 3" />
+                            <h4>Desprendimiento de retina</h4>
+                            <p>Explora las relacionadas a al desprendimiento de retina: síntomas, estadísticas y prevención</p>
+                            <button><a href="">Comenzar</a></button>
                         </div>
                         <div className="card highlighted">
                             <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 2" />
-                            <h4>Enfermedad 2</h4>
+                            <h4>Cataratas</h4>
                             <p>Explora las relacionadas a la Enfermedad 2: síntomas, estadísticas y prevención</p>
-                            <button>Comenzar</button>
+                            <button><a href="/cataratas">Comenzar</a></button>
                         </div>
                         <div className="card disabled">
-                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 3" />
-                            <h4>Enfermedad 3</h4>
-                            <p>Explora las relacionadas a la Enfermedad 3: síntomas, estadísticas y prevención</p>
-                            <button>Comenzar</button>
+                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 1" />
+                            <h4>Miopía</h4>
+                            <p>Explora las relacionadas a la miopía: síntomas, estadísticas y prevención</p>
+                            <button><a href="/miopia">Comenzar</a></button>
                         </div>
                         <div className="card disabled">
                             <img src="/images/home/card-eye-desease.webp" alt="Conjuntivitis" />
                             <h4>Conjuntivitis</h4>
                             <p>Explora las relacionadas a la conjuntivitis: síntomas, estadísticas y prevención</p>
-                            <button>Comenzar</button>
+                            <button><a href="/conjuntivitis">Comenzar</a></button>
                         </div>
+
                     </div>
                     <button className="carousel-btn right" onClick={() => scrollCarousel("right")}>›</button>
                 </div>
@@ -79,7 +80,7 @@ const Home = () => {
 
             {/* Experiencia Section */}
             <section className="experience-section gradient-bg">
-                <h3>Vive la experiencia Horizon</h3>
+                <h2>Vive la experiencia Horizon</h2>
                 <div className="experience-cards">
                     <div className="card">
                         <img src="/images/home/banner-3d-experience.webp" alt="Experiencia 3D" />
