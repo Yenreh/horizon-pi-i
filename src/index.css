@@ -27,6 +27,15 @@
     --color-5: #9EA3FF;
     --color-6: #D1D3FF;
     --color-7: #333333;
+
+    --color-0-rgb: 255, 255, 255;
+    --color-1-rgb: 0, 0, 0;
+    --color-2-rgb: 2, 8, 115;
+    --color-3-rgb: 14, 17, 64;
+    --color-4-rgb: 91, 97, 217;
+    --color-5-rgb: 158, 163, 255;
+    --color-6-rgb: 209, 211, 255;
+    --color-7-rgb: 51, 51, 51;
 }
 
 /* Body */
