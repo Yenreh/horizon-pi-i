@@ -8,6 +8,9 @@
 .align-left {
     float: left;
 }
+.gradient-bg{
+    background: radial-gradient(circle, var(--color-0) 0%, var(--color-6) 70%);
+}
 
 /* Hero Section */
 .hero-section {
@@ -44,7 +47,6 @@
 
 /* Intro Section */
 .intro-section {
-    background-color: var(--color-6);
     padding: 2rem 1.5rem;
     text-align: center;
 }
@@ -158,11 +160,6 @@ button.carousel-btn:active {
 .card button {
     border: none;
     padding: 0.5rem 1rem;
-    cursor: pointer;
-}
-
-.card button:hover {
-    background-color: #4f46e5;
 }
 
 /* Experience Section */
