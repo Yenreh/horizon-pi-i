@@ -9,6 +9,19 @@
 .home-container {
     width: 100%;
 }
+.section-content {
+    padding: 2rem 10%;
+}
+.text-image-container{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.text-image-container img{
+    width: 40%;
+    height: auto;
+    border-radius: 1rem;
+}
 
 .gradient-bg {
     background: radial-gradient(circle, var(--color-0) 0%, var(--color-6) 70%);
@@ -242,5 +255,14 @@
 
     .carousel-btn.right {
         right: 0.25rem;
+    }
+    .text-image-container{
+        flex-direction: column;
+        gap: 0;
+    }
+    .text-image-container img{
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
     }
 }

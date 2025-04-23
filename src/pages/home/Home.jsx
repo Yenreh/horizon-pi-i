@@ -78,13 +78,27 @@ const Home = () => {
                 <h2>
                     Expande tus fronteras sobre las enfermedades que afectan tu salud ocular
                 </h2>
-                <p className="align-right">
-                    En Horizon, nos dedicamos a brindarte información precisa y actualizada sobre las enfermedades oculares. Nuestro objetivo es ayudarte a comprender mejor tu salud ocular y empoderarte para tomar decisiones informadas.
-                </p>
-                <p className="align-left">
-                    Ya sea que estés buscando información sobre síntomas, tratamientos o prevención, estamos aquí para guiarte en cada paso del camino. Nuestro equipo de expertos trabaja arduamente para ofrecerte contenido de calidad y recursos útiles.
-                </p>
-                <button className="learn-more-btn">Aprende más</button>
+                <div className="section-content">
+                    <p>
+                        En Horizon, nos dedicamos a brindarte información precisa y actualizada sobre las enfermedades
+                        oculares. Nuestro objetivo es ayudarte a comprender mejor tu salud ocular y empoderarte para
+                        tomar decisiones informadas.
+                    </p>
+                    <div className="text-image-container">
+                        <img src="/public/images/eye-color.jpg" alt="Salud ocular" className="intro-image"/>
+                        <div className="text-content">
+                            <p className>
+                                Ya sea que estés buscando información sobre síntomas, tratamientos o prevención, estamos
+                                aquí para guiarte en cada paso del camino. Nuestro equipo de expertos trabaja arduamente
+                                para ofrecerte contenido de calidad y recursos útiles.
+                            </p>
+                            <button className="learn-more-btn">Aprende más</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
             </section>
 
             {/* Enfermedades Carousel */}
