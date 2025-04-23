@@ -85,7 +85,7 @@ const Home = () => {
                         tomar decisiones informadas.
                     </p>
                     <div className="text-image-container">
-                        <img src="/public/images/eye-color.jpg" alt="Salud ocular" className="intro-image"/>
+                        <img src="/images/eye-color.webp" alt="Salud ocular" className="intro-image"/>
                         <div className="text-content">
                             <p className>
                                 Ya sea que estés buscando información sobre síntomas, tratamientos o prevención, estamos
