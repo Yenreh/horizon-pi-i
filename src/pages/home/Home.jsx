@@ -1,60 +1,62 @@
-import { useRef, useEffect, useCallback } from "react";
+import {useRef, useEffect, useCallback} from "react";
 import "./Home.css";
 
 const Home = () => {
     const carouselRef = useRef(null);
-    const gap = 16; // px, same as CSS var(--card-gap)
+    const gap = 16;
 
-    // Function to update classes based on center index
+    // Actualiza clases según la tarjeta visible en el centro
     const updateClasses = useCallback(() => {
         const container = carouselRef.current;
         if (!container) return;
+        const wrapper = container.parentElement;
         const cards = Array.from(container.children);
+        if (!cards.length) return;
+
+        const cardWidth = cards[0].offsetWidth;
+        const wrapperWidth = wrapper.offsetWidth;
+        const visibleCount = Math.round((wrapperWidth + gap) / (cardWidth + gap));
+        const midIndex = Math.floor(visibleCount / 2);
+
         cards.forEach((card, idx) => {
-            card.classList.toggle("highlighted", idx === 1);
-            card.classList.toggle("disabled", idx !== 1);
+            card.classList.toggle("highlighted", idx === midIndex);
+            card.classList.toggle("disabled", idx !== midIndex);
         });
-    }, []);
+    }, [gap]);
 
-    // Carousel scroll/rotate
-    const scrollCarousel = useCallback(
-        (direction) => {
-            const container = carouselRef.current;
-            if (!container) return;
-            const cards = container.children;
-            if (cards.length === 0) return;
+    // Rota el carrusel infinitamente
+    const scrollCarousel = useCallback((direction) => {
+        const container = carouselRef.current;
+        if (!container) return;
+        const cards = container.children;
+        if (!cards.length) return;
 
-            const first = cards[0];
-            const last = cards[cards.length - 1];
-            const cardWidth = first.offsetWidth;
-            const scrollAmount = cardWidth + gap;
+        const first = cards[0];
+        const last = cards[cards.length - 1];
+        const cardWidth = first.offsetWidth;
+        const scrollAmount = cardWidth + gap;
 
-            // Apply transition and transform
-            container.style.transition = "transform 0.5s ease-in-out";
-            container.style.transform = direction === "right"
-                ? `translateX(-${scrollAmount}px)`
-                : `translateX(${scrollAmount}px)`;
+        container.style.transition = "transform 0.5s ease-in-out";
+        container.style.transform = direction === "right" ? `translateX(-${scrollAmount}px)` : `translateX(${scrollAmount}px)`;
 
-            const onTransitionEnd = () => {
-                container.style.transition = "none";
-                container.style.transform = "none";
+        const handleTransitionEnd = () => {
+            container.style.transition = "none";
+            container.style.transform = "none";
 
-                if (direction === "right") {
-                    container.appendChild(first);
-                } else {
-                    container.insertBefore(last, first);
-                }
+            if (direction === "right") {
+                container.appendChild(first);
+            } else {
+                container.insertBefore(last, first);
+            }
 
-                updateClasses();
-                container.removeEventListener("transitionend", onTransitionEnd);
-            };
+            updateClasses();
+            container.removeEventListener("transitionend", handleTransitionEnd);
+        };
 
-            container.addEventListener("transitionend", onTransitionEnd);
-        },
-        [updateClasses]
-    );
+        container.addEventListener("transitionend", handleTransitionEnd);
+    }, [gap, updateClasses]);
 
-    // Initialize classes on mount
+    // Inicializa clases en montaje
     useEffect(() => {
         updateClasses();
     }, [updateClasses]);
@@ -73,7 +75,9 @@ const Home = () => {
 
             {/* Intro Section */}
             <section className="intro-section gradient-bg">
-                <h2>Expande tus fronteras sobre las enfermedades que afectan tu salud ocular</h2>
+                <h2>
+                    Expande tus fronteras sobre las enfermedades que afectan tu salud ocular
+                </h2>
                 <p className="align-right">
                     En Horizon, nos dedicamos a brindarte información precisa y actualizada sobre las enfermedades oculares. Nuestro objetivo es ayudarte a comprender mejor tu salud ocular y empoderarte para tomar decisiones informadas.
                 </p>
@@ -88,8 +92,8 @@ const Home = () => {
                 <h3>Comienza a explorar las enfermedades</h3>
                 <div className="carousel-wrapper">
                     <button className="carousel-btn left" onClick={() => scrollCarousel("left")}>‹</button>
-                    <div className="carousel-container" id="carousel" ref={carouselRef}>
-                        <div className="card" key="1">
+                    <div className="carousel-container" ref={carouselRef}>
+                        <div className="card">
                             <img src="/images/home/card-eye-desease.webp" alt="Desprendimiento de retina" />
                             <div className="card-content">
                                 <h4>Desprendimiento de retina</h4>
@@ -97,7 +101,7 @@ const Home = () => {
                                 <button><a href="">Comenzar</a></button>
                             </div>
                         </div>
-                        <div className="card" key="2">
+                        <div className="card">
                             <img src="/images/home/card-eye-desease.webp" alt="Cataratas" />
                             <div className="card-content">
                                 <h4>Cataratas</h4>
@@ -105,7 +109,7 @@ const Home = () => {
                                 <button><a href="/cataratas">Comenzar</a></button>
                             </div>
                         </div>
-                        <div className="card" key="3">
+                        <div className="card">
                             <img src="/images/home/card-eye-desease.webp" alt="Miopía" />
                             <div className="card-content">
                                 <h4>Miopía</h4>
@@ -113,7 +117,7 @@ const Home = () => {
                                 <button><a href="/miopia">Comenzar</a></button>
                             </div>
                         </div>
-                        <div className="card" key="4">
+                        <div className="card">
                             <img src="/images/home/card-eye-desease.webp" alt="Conjuntivitis" />
                             <div className="card-content">
                                 <h4>Conjuntivitis</h4>
@@ -149,5 +153,6 @@ const Home = () => {
         </div>
     );
 };
+
 
 export default Home;
