@@ -18,7 +18,7 @@ export default function Myopia() {
         </section>
 
         {/* Navegación tipo pestaña */}
-        <section className="desease-navigation">
+        <section className="desease-navigation-align-right">
           <div className="desease-nav-pill-left">¿Qué es?</div>
         </section>
 
