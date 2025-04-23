@@ -9,7 +9,7 @@ export default function definition() {
   return (
     <div className="container">
       <div className="header">
-        <img src="/images/eye-cataracts.jpg" alt="eye" className="main-image" />
+        <img src="/images/eye-cataracts.webp" alt="eye" className="main-image" />
         <div className="title-overlay">CATARATA OCULAR</div>
       </div>
 
