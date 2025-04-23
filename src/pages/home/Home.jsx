@@ -49,25 +49,25 @@ const Home = () => {
                     <button className="carousel-btn left" onClick={() => scrollCarousel("left")}>‹</button>
                     <div className="carousel-container" id="carousel">
                         <div className="card disabled">
-                            <img src="/images/card-1-image.jpg" alt="Enfermedad 1" />
+                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 1" />
                             <h4>Enfermedad 1</h4>
                             <p>Explora las relacionadas a la Enfermedad 1: síntomas, estadísticas y prevención</p>
                             <button>Comenzar</button>
                         </div>
                         <div className="card highlighted">
-                            <img src="/images/card-1-image.jpg" alt="Enfermedad 2" />
+                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 2" />
                             <h4>Enfermedad 2</h4>
                             <p>Explora las relacionadas a la Enfermedad 2: síntomas, estadísticas y prevención</p>
                             <button>Comenzar</button>
                         </div>
                         <div className="card disabled">
-                            <img src="/images/card-1-image.jpg" alt="Enfermedad 3" />
+                            <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 3" />
                             <h4>Enfermedad 3</h4>
                             <p>Explora las relacionadas a la Enfermedad 3: síntomas, estadísticas y prevención</p>
                             <button>Comenzar</button>
                         </div>
                         <div className="card disabled">
-                            <img src="/images/card-1-image.jpg" alt="Conjuntivitis" />
+                            <img src="/images/home/card-eye-desease.webp" alt="Conjuntivitis" />
                             <h4>Conjuntivitis</h4>
                             <p>Explora las relacionadas a la conjuntivitis: síntomas, estadísticas y prevención</p>
                             <button>Comenzar</button>
@@ -81,13 +81,19 @@ const Home = () => {
             <section className="experience-section gradient-bg">
                 <h3>Vive la experiencia Horizon</h3>
                 <div className="experience-cards">
-                    <div className="experience-card">
-                        <p>Un viaje a la profundidad de tus ojos mediante nuestra maravillosa experiencia 3D</p>
-                        <button>Ver</button>
+                    <div className="card">
+                        <img src="/images/home/banner-3d-experience.webp" alt="Experiencia 3D" />
+                        <div className="card-content">
+                            <p>Un viaje a la profundidad de tus ojos mediante nuestra maravillosa experiencia 3D</p>
+                            <button>Ver</button>
+                        </div>
                     </div>
-                    <div className="experience-card">
-                        <p>Prueba tus conocimientos aprendidos mediante nuestro quiz interactivo</p>
-                        <button>Empezar</button>
+                    <div className="card">
+                        <img src="/images/home/banner-quiz.webp" alt="Quiz" />
+                        <div className="card-content">
+                            <p>Prueba tus conocimientos aprendidos mediante nuestro quiz interactivo</p>
+                            <button>Empezar</button>
+                        </div>
                     </div>
                 </div>
             </section>
