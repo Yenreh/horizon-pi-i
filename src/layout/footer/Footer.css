@@ -1,4 +1,9 @@
 footer{
-    background-color: var(--color-3);
+    background-color: var(--color-2);
     padding: 1rem;
+}
+
+footer >  ul li::before{
+    content: unset;
+    list-style: none;
 }
