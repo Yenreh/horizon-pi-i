@@ -23,7 +23,7 @@ const Header = () => {
         <header>
             <nav ref={navRef}>
                 <div className="logo-container">
-                    <img src="/public/favicon.png" alt="Logo" className="logo" />
+                    <img src="/favicon.png" alt="Logo" className="logo" />
                     <span>Horizon</span>
                 </div>
 
