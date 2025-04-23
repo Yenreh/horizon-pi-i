@@ -61,6 +61,8 @@ button:hover {
 }
 
 p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 500;
     color: var(--color-7);
 }
 

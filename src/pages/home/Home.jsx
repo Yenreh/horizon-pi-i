@@ -3,22 +3,42 @@ import "./Home.css";
 const Home = () => {
     const scrollCarousel = (direction) => {
         const container = document.getElementById("carousel");
-        const cards = Array.from(container.children);
+        const cards = container.children;
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 16; // 1rem en pixeles
+        const scrollAmount = cardWidth + gap;
+
+        // Deshabilitar transición temporalmente para reposicionamiento
+        container.style.transition = 'none';
 
         if (direction === "right") {
-            const firstCard = cards[0];
-            container.appendChild(firstCard);
-        } else if (direction === "left") {
-            const lastCard = cards[cards.length - 1];
-            container.insertBefore(lastCard, cards[0]);
+            // Mover primer elemento al final
+            container.appendChild(cards[0]);
+            container.style.transform = `translateX(-${scrollAmount}px)`;
+            // Forzar reflow
+            void container.offsetWidth;
+            // Aplicar transición suave
+            container.style.transition = 'transform 0.5s ease-in-out';
+            container.style.transform = 'translateX(0)';
+        } else {
+            // Mover último elemento al principio
+            container.insertBefore(cards[cards.length - 1], cards[0]);
+            container.style.transform = `translateX(-${scrollAmount}px)`;
+            // Forzar reflow
+            void container.offsetWidth;
+            // Aplicar transición suave
+            container.style.transition = 'transform 0.5s ease-in-out';
+            container.style.transform = 'translateX(0)';
         }
 
-        // Reasignar clase 'highlighted' a la nueva card central
-        const updatedCards = container.querySelectorAll(".card");
-        updatedCards.forEach((card) => card.classList.remove("highlighted"));
-        updatedCards.forEach((card) => card.classList.add("disabled"));
-        updatedCards[1].classList.add("highlighted");
-        updatedCards[1].classList.remove("disabled");
+        // Actualizar clases después de la transición
+        setTimeout(() => {
+            const middleIndex = 1; // El segundo elemento siempre será el central
+            Array.from(cards).forEach((card, index) => {
+                card.classList.toggle('highlighted', index === middleIndex);
+                card.classList.toggle('disabled', index !== middleIndex);
+            });
+        }, 50);
     };
 
 
@@ -50,27 +70,35 @@ const Home = () => {
                     <div className="carousel-container" id="carousel">
                         <div className="card disabled">
                             <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 3" />
-                            <h4>Desprendimiento de retina</h4>
-                            <p>Explora las relacionadas a al desprendimiento de retina: síntomas, estadísticas y prevención</p>
-                            <button><a href="">Comenzar</a></button>
+                            <div className="card-content">
+                                <h4>Desprendimiento de retina</h4>
+                                <p>Explora las relacionadas a al desprendimiento de retina: síntomas, estadísticas y prevención</p>
+                                <button><a href="">Comenzar</a></button>
+                            </div>
                         </div>
                         <div className="card highlighted">
                             <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 2" />
-                            <h4>Cataratas</h4>
-                            <p>Explora las relacionadas a la Enfermedad 2: síntomas, estadísticas y prevención</p>
-                            <button><a href="/cataratas">Comenzar</a></button>
+                            <div className="card-content">
+                                <h4>Cataratas</h4>
+                                <p>Explora las relacionadas a la Enfermedad 2: síntomas, estadísticas y prevención</p>
+                                <button><a href="/cataratas">Comenzar</a></button>
+                            </div>
                         </div>
                         <div className="card disabled">
                             <img src="/images/home/card-eye-desease.webp" alt="Enfermedad 1" />
-                            <h4>Miopía</h4>
-                            <p>Explora las relacionadas a la miopía: síntomas, estadísticas y prevención</p>
-                            <button><a href="/miopia">Comenzar</a></button>
+                            <div className="card-content">
+                                <h4>Miopía</h4>
+                                <p>Explora las relacionadas a la miopía: síntomas, estadísticas y prevención</p>
+                                <button><a href="/miopia">Comenzar</a></button>
+                            </div>
                         </div>
                         <div className="card disabled">
                             <img src="/images/home/card-eye-desease.webp" alt="Conjuntivitis" />
-                            <h4>Conjuntivitis</h4>
-                            <p>Explora las relacionadas a la conjuntivitis: síntomas, estadísticas y prevención</p>
-                            <button><a href="/conjuntivitis">Comenzar</a></button>
+                            <div className="card-content">
+                                <h4>Conjuntivitis</h4>
+                                <p>Explora las relacionadas a la conjuntivitis: síntomas, estadísticas y prevención</p>
+                                <button><a href="/conjuntivitis">Comenzar</a></button>
+                            </div>
                         </div>
 
                     </div>
