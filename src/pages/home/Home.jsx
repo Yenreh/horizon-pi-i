@@ -12,19 +12,25 @@ const Home = () => {
         { name: "desprendimiento_retina", verbose: "Desprendimiento de retina" },
     ];
 
-    const scroll = useCallback((direction) => {
-        const carousel = carouselRef.current;
-        if (carousel) {
-            const cardWidth = carousel.querySelector('.carousel-card')?.offsetWidth || 300; // Get width of first card or default
-            const gap = 16;
-            const scrollAmount = cardWidth + gap;
+const scroll = useCallback((direction) => {
+    const carousel = carouselRef.current;
+    if (carousel) {
+        const cardWidth = carousel.querySelector('.carousel-card')?.offsetWidth || 300; // Get width of first card or default
+        const gap = 16;
+        const scrollAmount = cardWidth + gap;
 
+        if (direction === 'right' && carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth) {
+            carousel.scrollTo({ left: 0, behavior: 'smooth' }); // Reset to start
+        } else if (direction === 'left' && carousel.scrollLeft === 0) {
+            carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' }); // Go to end
+        } else {
             carousel.scrollBy({
                 left: direction === 'left' ? -scrollAmount : scrollAmount,
                 behavior: 'smooth'
             });
         }
-    }, []);
+    }
+}, []);
 
     return (
         <div className="home-container">
