@@ -123,15 +123,14 @@ button.btn-primary:hover {
     border-color: var(--color-5);
 }
 
-button.btn-outline-primary {
+a.btn-outline-primary {
     font-family: 'Source Sans 3', sans-serif;
     border-color: var(--color-5);
     color: var(--color-4);
     font-weight: 400;
     font-size: 1rem;
-    border: 2px solid var(--color-4);
 }
-button.btn-outline-primary:hover {
+a.btn-outline-primary:hover {
     background-color: var(--color-4);
     color: var(--color-0);
     border-color: var(--color-4);

@@ -7,10 +7,8 @@ import NotFound from "./pages/not-found/NotFound";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 import Layout from "./layout/Layout";
-// import App from "./App";
 
 createRoot(document.getElementById("root")).render(
-    // <App />
     <BrowserRouter>
         <Layout>
             <Routes>
