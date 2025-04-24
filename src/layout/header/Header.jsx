@@ -1,56 +1,66 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import "./Header.css";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const navRef = useRef(null);
 
     const toggleMenu = () => setMenuOpen((prev) => !prev);
+    const deseases = [
+        { name: "cataratas", verbose: "Cataratas" },
+        { name: "miopia", verbose: "Miopía" },
+        { name: "conjuntivitis", verbose: "Conjuntivitis" },
+        { name: "desprendimiento_retina", verbose: "Desprendimiento de retina" },
+    ];
 
-    // Cerrar menú al hacer clic fuera
-    useEffect(() => {
-        const handleClickOutside = (e) => {
-            if (navRef.current && !navRef.current.contains(e.target)) {
-                setMenuOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
-
-    return (
-        <header>
-            <nav ref={navRef}>
-                <div className="logo-container">
-                    <img src="/favicon.png" alt="Logo" className="logo" />
+    return (<header>
+        <Navbar expand="lg" expanded={menuOpen}>
+            <Container>
+                <Navbar.Brand href="/" className="d-flex align-items-center">
+                    <img
+                        src="/favicon.png"
+                        alt="Logo"
+                        className="me-2"
+                        style={{ height: "30px" }}
+                    />
                     <span>Horizon</span>
-                </div>
-
-                <div className={menuOpen ? "nav-links open" : "nav-links"}>
-                    <NavLink to="/" end onClick={() => setMenuOpen(false)}>
-                        Inicio
-                    </NavLink>
-                    <NavLink to="/cataratas" onClick={() => setMenuOpen(false)}>
-                        Cataratas
-                    </NavLink>
-                    <NavLink to="/miopia" onClick={() => setMenuOpen(false)}>
-                        Miopía
-                    </NavLink>
-                    <NavLink to="/conjuntivitis" onClick={() => setMenuOpen(false)}>
-                        Conjuntivitis
-                    </NavLink>
-                    <NavLink to="/desprendimiento_retina" onClick={() => setMenuOpen(false)}>
-                        Desprendimiento de retina
-                    </NavLink>
-                </div>
-
-                <button className="burger-btn" onClick={toggleMenu} aria-label="Toggle menu">
-                    <span className={menuOpen ? "burger open" : "burger"} />
-                </button>
-            </nav>
-        </header>
-    );
+                </Navbar.Brand>
+                <Navbar.Toggle
+                    aria-controls="navbarNav"
+                    onClick={toggleMenu}
+                />
+                <Navbar.Collapse id="navbarNav">
+                    <Nav className="ms-auto">
+                        <Nav.Item>
+                            <Nav.Link as={NavLink} to="/" end onClick={() => setMenuOpen(false)}>
+                                Inicio
+                            </Nav.Link>
+                        </Nav.Item>
+                        {deseases.map((disease) => (<Nav.Item key={disease.name}>
+                            <Nav.Link
+                                as={NavLink}
+                                to={`/${disease.name}`}
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                {disease.verbose}
+                            </Nav.Link>
+                        </Nav.Item>))}
+                        <Nav.Item>
+                            <Button
+                                variant="primary"
+                                size="sm"
+                                className="h-100"
+                                onClick={() => alert("Login clicked!")}
+                            >
+                                Iniciar sesión
+                            </Button>
+                        </Nav.Item>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    </header>);
 };
 
 export default Header;

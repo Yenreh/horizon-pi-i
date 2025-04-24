@@ -1,114 +1,36 @@
-header {
+header  {
     background-color: var(--color-2);
-    padding: 1rem;
+    color: var(--color-1);
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
+header .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
+header .navbar-toggler {
+    border-color: var(--color-0)
 }
 
-.logo-container span {
+header .navbar-toggler:focus {
+    box-shadow: none
+}
+
+header .navbar-toggler:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+header .navbar-brand span{
     color: var(--color-0);
-    margin-left: 0.5rem;
-    font-size: 1.25rem;
-    font-weight: bold;
+    
 }
-
-.logo {
-    height: 50px;
-}
-
-/* Nav Links */
-.nav-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.nav-links a {
+header .nav-item .nav-link{
     color: var(--color-0);
-    text-decoration: none;
-    font-weight: 500;
+}
+header .nav-item .nav-link.active{
+    color: var(--color-5);
+    text-decoration: underline;
 }
 
-.nav-links a.active {
-    border-bottom: 2px solid var(--color-0);
-}
-
-/* Burger Button */
-.burger-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 20;
-}
-
-.burger,
-.burger::before,
-.burger::after {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 3px;
-    background: var(--color-0);
-    border-radius: 2px;
-    transition: transform 0.3s ease;
-}
-
-.burger::before {
-    transform: translateY(-7px);
-}
-
-.burger::after {
-    transform: translateY(4px);
-}
-
-.burger.open {
-    background: transparent;
-}
-.burger.open::before {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-.burger.open::after {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .burger-btn {
-        display: block;
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        flex-direction: column;
-        background: var(--color-2);
-        width: 200px;
-        padding: 0.5rem 0;
-        box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        pointer-events: none;
-        z-index: 2;
-        transition: opacity 0.3s ease;
-    }
-
-    .nav-links.open {
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    .nav-links a {
-        padding: 0.75rem 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
+header .nav-item link:hover{
+    color: var(--color-5);
 }
