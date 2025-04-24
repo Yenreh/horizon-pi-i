@@ -1,172 +1,154 @@
-import {useRef, useEffect, useCallback} from "react";
+import { useRef, useEffect, useCallback } from "react";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import "./Home.css";
 
 const Home = () => {
     const carouselRef = useRef(null);
-    const gap = 16;
-
-    // Actualiza clases según la tarjeta visible en el centro
-    const updateClasses = useCallback(() => {
-        const container = carouselRef.current;
-        if (!container) return;
-        const wrapper = container.parentElement;
-        const cards = Array.from(container.children);
-        if (!cards.length) return;
-
-        const cardWidth = cards[0].offsetWidth;
-        const wrapperWidth = wrapper.offsetWidth;
-        const visibleCount = Math.round((wrapperWidth + gap) / (cardWidth + gap));
-        const midIndex = Math.floor(visibleCount / 2);
-
-        cards.forEach((card, idx) => {
-            card.classList.toggle("highlighted", idx === midIndex);
-            card.classList.toggle("disabled", idx !== midIndex);
-        });
-    }, [gap]);
-
-    // Rota el carrusel infinitamente
-    const scrollCarousel = useCallback((direction) => {
-        const container = carouselRef.current;
-        if (!container) return;
-        const cards = container.children;
-        if (!cards.length) return;
-
-        const first = cards[0];
-        const last = cards[cards.length - 1];
-        const cardWidth = first.offsetWidth;
-        const scrollAmount = cardWidth + gap;
-
-        container.style.transition = "transform 0.5s ease-in-out";
-        container.style.transform = direction === "right" ? `translateX(-${scrollAmount}px)` : `translateX(${scrollAmount}px)`;
-
-        const handleTransitionEnd = () => {
-            container.style.transition = "none";
-            container.style.transform = "none";
-
-            if (direction === "right") {
-                container.appendChild(first);
-            } else {
-                container.insertBefore(last, first);
-            }
-
-            updateClasses();
-            container.removeEventListener("transitionend", handleTransitionEnd);
-        };
-
-        container.addEventListener("transitionend", handleTransitionEnd);
-    }, [gap, updateClasses]);
-
-    // Inicializa clases en montaje
-    useEffect(() => {
-        updateClasses();
-    }, [updateClasses]);
+    const deseases = [
+        {
+            name: "desprendimiento_retina",
+            verbose: "Desprendimiento de retina",
+        },
+        {
+            name: "cataratas",
+            verbose: "Cataratas",
+        },
+        {
+            name: "miopia",
+            verbose: "Miopía"
+        },
+        {
+            name: "conjuntivitis",
+            verbose: "Conjuntivitis"
+        }
+    ];
 
     return (
         <div className="home-container">
             {/* Hero Section */}
-            <section className="hero-section">
-                <div className="hero-overlay">
-                    <div className="hero-text">
-                        <h1>Horizon</h1>
-                        <p>Cuidamos tu vista, ampliamos tu horizonte</p>
-                    </div>
+            <section className="hero-section d-flex align-items-center justify-content-end position-relative p-5">
+                <div className="text-white text-end">
+                    <h1 className="hero-tittle">Horizon</h1>
+                    <p className="lead">Cuidamos tu vista, ampliamos tu horizonte</p>
                 </div>
             </section>
 
             {/* Intro Section */}
-            <section className="intro-section gradient-bg">
-                <h2>
-                    Expande tus fronteras sobre las enfermedades que afectan tu salud ocular
-                </h2>
-                <div className="section-content">
-                    <p>
-                        En Horizon, nos dedicamos a brindarte información precisa y actualizada sobre las enfermedades
-                        oculares. Nuestro objetivo es ayudarte a comprender mejor tu salud ocular y empoderarte para
-                        tomar decisiones informadas.
-                    </p>
-                    <div className="text-image-container">
-                        <img src="/images/eye-color.webp" alt="Salud ocular" className="intro-image"/>
-                        <div className="text-content">
-                            <p className>
-                                Ya sea que estés buscando información sobre síntomas, tratamientos o prevención, estamos
-                                aquí para guiarte en cada paso del camino. Nuestro equipo de expertos trabaja arduamente
-                                para ofrecerte contenido de calidad y recursos útiles.
+            <section className="gradient-bg py-5">
+                <Container>
+                    <h2 className="text-center mb-4">
+                        Expande tus fronteras sobre las enfermedades que afectan tu salud ocular
+                    </h2>
+                    <Row className="g-4 align-items-center">
+                        <Col md={6}>
+                            <p className="mb-4">
+                                En Horizon, nos dedicamos a brindarte información precisa y actualizada sobre las enfermedades
+                                oculares. Nuestro objetivo es ayudarte a comprender mejor tu salud ocular y empoderarte para
+                                tomar decisiones informadas.
                             </p>
-                            <button className="learn-more-btn">Aprende más</button>
-                        </div>
-
-
-                    </div>
-
-                </div>
+                            <p>
+                                Ya sea que estés buscando información sobre síntomas, tratamientos o prevención, estamos aquí 
+                                para guiarte en cada paso del camino. Nuestro equipo de expertos trabaja arduamente para ofrecerte
+                                 contenido de calidad y recursos útiles.
+                                 </p>
+                        </Col>
+                        <Col md={6}>
+                            <img 
+                                src="/images/eye-color.webp" 
+                                alt="Salud ocular" 
+                                className="img-fluid shadow-sm rounded-bottom-pill rounded-start-pill"
+                            />
+                        </Col>
+                        <Col xs={12}>
+                            <p className="text-center">
+                                ¿Quieres saber más sobre cómo cuidar de tus ojos? ¡No te preocupes! En Horizon, tenemos
+                                recursos y herramientas para ayudarte a mantener una buena salud ocular.
+                            </p>
+                            <div className="text-center mt-4">
+                                <Button variant="primary" size="lg">Aprende más</Button>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
             </section>
-
-            {/* Enfermedades Carousel */}
-            <section className="explore-section">
-                <h3>Comienza a explorar las enfermedades</h3>
-                <div className="carousel-wrapper">
-                    <button className="carousel-btn left" onClick={() => scrollCarousel("left")}>‹</button>
-                    <div className="carousel-container" ref={carouselRef}>
-                        <div className="card">
-                            <img src="/images/home/card-eye-desease.webp" alt="Desprendimiento de retina" />
-                            <div className="card-content">
-                                <h4>Desprendimiento de retina</h4>
-                                <p>Explora lo relacionado al desprendimiento de retina: síntomas, estadísticas y prevención</p>
-                                <button><a href="">Comenzar</a></button>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src="/images/home/card-eye-desease.webp" alt="Cataratas" />
-                            <div className="card-content">
-                                <h4>Cataratas</h4>
-                                <p>Explora lo relacionado a las cataratas: síntomas, estadísticas y prevención</p>
-                                <button><a href="/cataratas">Comenzar</a></button>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src="/images/home/card-eye-desease.webp" alt="Miopía" />
-                            <div className="card-content">
-                                <h4>Miopía</h4>
-                                <p>Explora lo relacionado a la miopía: síntomas, estadísticas y prevención</p>
-                                <button><a href="/miopia">Comenzar</a></button>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <img src="/images/home/card-eye-desease.webp" alt="Conjuntivitis" />
-                            <div className="card-content">
-                                <h4>Conjuntivitis</h4>
-                                <p>Explora lo relacionado a la conjuntivitis: síntomas, estadísticas y prevención</p>
-                                <button><a href="/conjuntivitis">Comenzar</a></button>
-                            </div>
-                        </div>
+            <section className="py-5 bg-white">
+                <Container>
+                    <h3 className="text-center mb-4">Comienza a explorar las enfermedades</h3>
+                    <div className="position-relative carousel-wrapper">
+                        <div 
+                            className="d-flex flex-nowrap overflow-hidden gap-3" 
+                            ref={carouselRef}
+                            style={{ transition: 'transform 0.3s ease-in-out' }}
+                        >
+                            {deseases.map((disease) => (
+                                <Card key={disease.name} className="carousel-card shadow-sm">
+                                    <Card.Img 
+                                        variant="top" 
+                                        src={`/images/home/card-eye-desease.webp`} 
+                                        alt={disease.verbose} 
+                                    />
+                                    <Card.Body className="text-center d-flex flex-column">
+                                        <Card.Title>{disease.verbose}</Card.Title>
+                                        <Card.Text>
+                                            Explora lo relacionado a {disease.verbose.toLowerCase()}: síntomas, estadísticas y prevención
+                                        </Card.Text>
+                                        <Button 
+                                            variant="outline-primary" 
+                                            className="mt-auto align-self-center"
+                                            href={`/${disease.name}`}
+                                        >
+                                            Comenzar
+                                        </Button>
+                                    </Card.Body>
+                                </Card>
+                            ))}
+                        </div>                
                     </div>
-                    <button className="carousel-btn right" onClick={() => scrollCarousel("right")}>›</button>
-                </div>
+                </Container>
             </section>
-
-            {/* Experiencia Section */}
-            <section className="experience-section gradient-bg">
-                <h2>Vive la experiencia Horizon</h2>
-                <div className="experience-cards">
-                    <div className="card">
-                        <img src="/images/home/banner-3d-experience.webp" alt="Experiencia 3D" />
-                        <div className="card-content">
-                            <p>Un viaje a la profundidad de tus ojos mediante nuestra maravillosa experiencia 3D</p>
-                            <button>Ver</button>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <img src="/images/home/banner-quiz.webp" alt="Quiz" />
-                        <div className="card-content">
-                            <p>Prueba tus conocimientos aprendidos mediante nuestro quiz interactivo</p>
-                            <button>Empezar</button>
-                        </div>
-                    </div>
-                </div>
+            <section className="gradient-bg py-5">
+                <Container>
+                    <h2 className="text-center mb-4">Vive la experiencia Horizon</h2>
+                    <Row className="g-4 justify-content-center">
+                        <Col md={6} className="d-flex">
+                            <Card className="shadow-sm w-100">
+                                <Card.Img 
+                                    variant="top" 
+                                    src="/images/home/banner-3d-experience.webp" 
+                                    alt="Experiencia 3D" 
+                                />
+                                <Card.Body className="d-flex flex-column">
+                                    <Card.Text className="flex-grow-1">
+                                        Un viaje a la profundidad de tus ojos mediante nuestra maravillosa experiencia 3D
+                                    </Card.Text>
+                                    <Button variant="primary" className="mt-3">
+                                        Ver
+                                    </Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        <Col md={6} className="d-flex">
+                            <Card className="shadow-sm w-100">
+                                <Card.Img 
+                                    variant="top" 
+                                    src="/images/home/banner-quiz.webp" 
+                                    alt="Quiz interactivo" 
+                                />
+                                <Card.Body className="d-flex flex-column">
+                                    <Card.Text className="flex-grow-1">
+                                        Prueba tus conocimientos aprendidos mediante nuestro quiz interactivo
+                                    </Card.Text>
+                                    <Button variant="primary" className="mt-3">
+                                        Empezar
+                                    </Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
             </section>
         </div>
     );
 };
-
 
 export default Home;

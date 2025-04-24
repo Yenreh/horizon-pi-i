@@ -4,10 +4,7 @@
 
 
 :root {
-    font-family: 'Nunito', sans-serif;
     line-height: 1.5;
-    font-weight: 400;
-
     color-scheme: light dark;
     color: var(--color-0);
     background-color: var(--color-0);
@@ -43,14 +40,8 @@
 html,
 body,
 #root {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    user-select: none;
-    overflow-x: hidden;
-    font-family: "Roboto", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
 }
 
 button {
@@ -118,11 +109,30 @@ h4 {
     line-height: 1.1;
 }
 
-li {
-    list-style-type: none;
+button.btn-primary {
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: var(--color-4);
+    color: var(--color-0);
+    font-weight: 400;
+    font-size: 1rem;
+    border: none;
 }
 
-.disabled {
-    pointer-events: none;
-    opacity: 0.5;
+button.btn-primary:hover {
+    background-color: var(--color-5);
+    border-color: var(--color-5);
+}
+
+button.btn-outline-primary {
+    font-family: 'Source Sans 3', sans-serif;
+    border-color: var(--color-5);
+    color: var(--color-4);
+    font-weight: 400;
+    font-size: 1rem;
+    border: 2px solid var(--color-4);
+}
+button.btn-outline-primary:hover {
+    background-color: var(--color-4);
+    color: var(--color-0);
+    border-color: var(--color-4);
 }
