@@ -15,6 +15,9 @@
     color: var(--color-0);
 }
 
+.custom-carousel-section{
+    padding-inline: 25%;
+}
 
 /* Carousel Specific Styles */
 .carousel-outer-wrapper {
@@ -99,6 +102,9 @@
 }
 
 @media (max-width: 768px) {
+    .custom-carousel-section{
+        padding-inline: 1rem;
+    }
     .carousel-control.prev {
         left: 5px;
     }
