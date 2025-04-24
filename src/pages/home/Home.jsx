@@ -76,7 +76,7 @@ const Home = () => {
             </section>
 
             {/* Diseases Carousel Section */}
-            <section className="py-5 bg-white">
+            <section className="py-5 bg-white custom-carousel-section">
                 <Container>
                     <h3 className="text-center mb-4">Comienza a explorar las enfermedades</h3>
                     <div className="position-relative carousel-outer-wrapper">
