@@ -1,11 +1,36 @@
-header{
-    background-color: var(--color-3);
-    padding: 1rem;
+header  {
+    background-color: var(--color-2);
+    color: var(--color-1);
 }
 
-nav{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 1rem;
+header .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+header .navbar-toggler {
+    border-color: var(--color-0)
+}
+
+header .navbar-toggler:focus {
+    box-shadow: none
+}
+
+header .navbar-toggler:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+header .navbar-brand span{
+    color: var(--color-0);
+    
+}
+header .nav-item .nav-link{
+    color: var(--color-0);
+}
+header .nav-item .nav-link.active{
+    color: var(--color-5);
+    text-decoration: underline;
+}
+
+header .nav-item link:hover{
+    color: var(--color-5);
 }

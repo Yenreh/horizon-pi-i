@@ -1,77 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap');
+
+
 :root {
-  line-height: 1.5;
-  font-weight: 400;
+    line-height: 1.5;
+    color-scheme: light dark;
+    color: var(--color-0);
+    background-color: var(--color-0);
 
-  color-scheme: light dark;
-  color: var(--color-0);
-  background-color: var(--color-0);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*Disable mobile zoom*/
+    touch-action: manipulation;
+    /*Colors*/
+    --color-0: #FFFFFF;
+    --color-1: #000000;
+    --color-2: #020873;
+    --color-3: #0E1140;
+    --color-4: #5B61D9;
+    --color-5: #9EA3FF;
+    --color-6: #D1D3FF;
+    --color-7: #333333;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  /*Colors*/
-  --color-0: #FFFFFF;
-  --color-1: #020873;
-  --color-2: #735C02;
-  --color-3: #0E1033;
-  --color-4: #C8AE47;
-  --color-7: #dacd97;
-  --color-5: #7E84F2;
-  --color-6: #5860e6;
-
+    --color-0-rgb: 255, 255, 255;
+    --color-1-rgb: 0, 0, 0;
+    --color-2-rgb: 2, 8, 115;
+    --color-3-rgb: 14, 17, 64;
+    --color-4-rgb: 91, 97, 217;
+    --color-5-rgb: 158, 163, 255;
+    --color-6-rgb: 209, 211, 255;
+    --color-7-rgb: 51, 51, 51;
 }
 
 /* Body */
+/* index.css */
 html,
 body,
 #root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  user-select: none;
-  overflow-x: hidden;
-  font-family: "Roboto", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
-
-a {
-  font-weight: 500;
-  color: var(--color-4);
-  text-decoration: inherit;
-}
-a:hover {
-  color: var(--color-0);
-}
-
-h1 {
-  color: var(--color-6);
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-li {
-  list-style-type: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-    color: var(--color-7);
-  background-color: var(--color-3);
-  cursor: pointer;
-  transition: border-color 0.25s;
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: var(--color-4);
+    color: var(--color-0);
+    font-weight: 400;
+    font-size: 1rem;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
 }
+
 button:hover {
-  border-color: var(--color-5);
+    background-color: var(--color-2);
+    border-color: var(--color-5);
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 500;
+    color: var(--color-7);
+}
+
+a {
+    font-weight: 500;
+    color: var(--color-6);
+    text-decoration: inherit;
+}
+
+a:hover {
+    color: var(--color-0);
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--color-1);
+    font-size: 3rem;
+    line-height: 1.1;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--color-1);
+    font-size: 1.5rem;
+    line-height: 1.1;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: var(--color-1);
+    font-size: 1.5rem;
+    line-height: 1.1;
+}
+
+h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: var(--color-1);
+    font-size: 1.1rem;
+    line-height: 1.1;
+}
+
+button.btn-primary {
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: var(--color-4);
+    color: var(--color-0);
+    font-weight: 400;
+    font-size: 1rem;
+    border: none;
+}
+
+button.btn-primary:hover {
+    background-color: var(--color-5);
+    border-color: var(--color-5);
+}
+
+a.btn-outline-primary {
+    font-family: 'Source Sans 3', sans-serif;
+    border-color: var(--color-5);
+    color: var(--color-4);
+    font-weight: 400;
+    font-size: 1rem;
+}
+a.btn-outline-primary:hover {
+    background-color: var(--color-4);
+    color: var(--color-0);
+    border-color: var(--color-4);
 }
