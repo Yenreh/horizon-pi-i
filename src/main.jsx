@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/home/Home";
 import Definition from "./pages/diseases/cataracts/definition/definition";
 import Myopia from "./pages/diseases/myopia/definition/Myopia";
+import RetinaDetachment from "./pages/diseases/retina-detachment/RetinaDetachment";
 import NotFound from "./pages/not-found/NotFound";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
@@ -15,8 +16,8 @@ createRoot(document.getElementById("root")).render(
                 <Route index path="/" element={<Home />} />
                 <Route path="*" element={<NotFound />} />
                 <Route path="/cataratas" element={<Definition />} />
-                <Route path="/retina-detachment" element={<RdDefinition/>} />
                 <Route path="/miopia" element={<Myopia />} />
+                <Route path="/desprendimiento_retina" element={<RetinaDetachment/>} />
             </Routes>
         </Layout>
     </BrowserRouter>

@@ -1,12 +1,12 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import React, { Suspense } from "react";
-import "./RdDefinition.css";
+import "./RetinaDetachment.css";
 import { EyeCrossSection } from "./models-3d/EyeCrossSection";
 import CameraSetup from "./camera/CameraSetup";
 import RetinaLight from "./lights/RetinaLight";
 
-const RdDefinition = () => {
+const RetinaDetachment = () => {
   return (
     <div className="container">
       <div className="inferior-curve">
@@ -78,4 +78,4 @@ const RdDefinition = () => {
   );
 };
 
-export default RdDefinition;
+export default RetinaDetachment;
