@@ -21,7 +21,7 @@ export default function RetinaLight() {
   return (
     <>
       {/* Luz ambiental global muy suave */}
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={0.3}/>
 
       {/* Luz tipo cielo y tierra, muy útil para interiores */}
       <hemisphereLight
@@ -37,6 +37,7 @@ export default function RetinaLight() {
         distance={10}
         decay={2}
         color={'#ffffff'}
+
       />
     </>
   );
