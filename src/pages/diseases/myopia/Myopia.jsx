@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react';
+import { useState, lazy, Suspense, useEffect } from 'react';
 import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap';
 import './Myopia.css';
 
@@ -9,6 +9,12 @@ const PreventionTab = lazy(() => import('./tabs/PreventionTab.jsx'));
 
 export default function Myopia() {
   const [key, setKey] = useState('definition');
+
+  const preloadTab = (tab) => {
+    if (tab === "symptoms") import('./tabs/SymptomsTab.jsx');
+    if (tab === "treatment") import('./tabs/TreatmentTab.jsx');
+    if (tab === "prevention") import('./tabs/PreventionTab.jsx');
+  };
 
   return (
     <Container fluid className="myopia-container px-0">
@@ -32,6 +38,7 @@ export default function Myopia() {
             id="myopia-info-tabs"
             activeKey={key}
             onSelect={(k) => setKey(k)}
+            onMouseEnter={(e) => preloadTab(e.target.getAttribute("eventKey"))}
             className="myopia-tabs mb-4 mt-4"
             variant="underline"
             fill
