@@ -36,6 +36,7 @@
 
 /* Section Titles */
 .home-section-title {
+    width: 70%;
     color: var(--color-3);
     position: relative;
     padding-bottom: 15px;
@@ -197,6 +198,9 @@
         flex: 0 0 240px;
         height: 360px;
     }
+    .home-section-title {
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
@@ -207,5 +211,9 @@
 
     .carousel-card .card-img-top {
         height: 140px;
+    }
+
+    .home-section-title {
+        width: 100%;
     }
 }

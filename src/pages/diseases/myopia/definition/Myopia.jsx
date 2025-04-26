@@ -33,10 +33,10 @@ export default function Myopia() {
                 activeKey={key}
                 onSelect={(k) => setKey(k)}
                 className="myopia-tabs mb-4 mt-4"
-                variant="pills"
+                variant="underline"
                 fill
             >
-              <Tab eventKey="definition" title="¿Qué es?" tabClassName="rounded-pill">
+              <Tab eventKey="definition" title="¿Qué es?">
                 <section className="myopia-content py-4 px-md-3">
                   <Row className="align-items-center gy-4">
                     <Col md={6}>
@@ -84,7 +84,7 @@ export default function Myopia() {
                   </Row>
                 </section>
               </Tab>
-              <Tab eventKey="symptoms" title="Síntomas" tabClassName="rounded-pill">
+              <Tab eventKey="symptoms" title="Síntomas" >
                 <section className="myopia-content py-4 px-md-3">
                   <Row>
                     <Col>
@@ -101,7 +101,7 @@ export default function Myopia() {
                 </section>
               </Tab>
 
-              <Tab eventKey="treatment" title="Tratamiento" tabClassName="rounded-pill">
+              <Tab eventKey="treatment" title="Tratamiento">
                 <section className="myopia-content py-4 px-md-3">
                   <Row>
                     <Col>
