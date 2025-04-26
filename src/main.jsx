@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/home/Home";
-import Definition from "./pages/diseases/cataracts/definition/definition";
+import Cataracts from "./pages/diseases/cataracts/Cataracts";
 import Myopia from "./pages/diseases/myopia/definition/Myopia";
 import NotFound from "./pages/not-found/NotFound";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,7 +14,7 @@ createRoot(document.getElementById("root")).render(
             <Routes>
                 <Route index path="/" element={<Home />} />
                 <Route path="*" element={<NotFound />} />
-                <Route path="/cataratas" element={<Definition />} />
+                <Route path="/cataratas" element={<Cataracts />} />
                 <Route path="/miopia" element={<Myopia />} />
             </Routes>
         </Layout>
