@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import "./definition.css";
+import "./Cataracts.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Eye } from "./model-3d/Eye";
