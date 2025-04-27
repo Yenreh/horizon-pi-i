@@ -43,168 +43,145 @@ export function EyeCrossSection(props) {
         <mesh
           name="Artery"
           castShadow
-          receiveShadow
           geometry={nodes.Artery.geometry}
           material={materials.ArteryMaterial}
         />
         <mesh
           name="Choroid01"
           castShadow
-          receiveShadow
           geometry={nodes.Choroid01.geometry}
           material={materials.ChoroidMaterial}
         />
         <mesh
           name="Choroid04"
           castShadow
-          receiveShadow
           geometry={nodes.Choroid04.geometry}
           material={materials.ChoroidMaterial}
         />
         <mesh
           name="Cornea"
           castShadow
-          receiveShadow
           geometry={nodes.Cornea.geometry}
           material={materials.CorneaMaterial}
         />
         <mesh
           name="ExtraocularMuscle01"
           castShadow
-          receiveShadow
           geometry={nodes.ExtraocularMuscle01.geometry}
           material={materials.ExtraocularMuscleMaterial01}
         />
         <mesh
           name="ExtraocularMuscle02"
           castShadow
-          receiveShadow
           geometry={nodes.ExtraocularMuscle02.geometry}
           material={materials.ExtraocularMuscleMaterial02}
         />
         <mesh
           name="ExtraocularMuscle03"
           castShadow
-          receiveShadow
           geometry={nodes.ExtraocularMuscle03.geometry}
           material={materials.ExtraocularMuscleMaterial03}
         />
         <mesh
           name="Iris"
           castShadow
-          receiveShadow
           geometry={nodes.Iris.geometry}
           material={materials.IrisMaterial}
         />
         <mesh
           name="Lens"
           castShadow
-          receiveShadow
           geometry={nodes.Lens.geometry}
           material={materials.LensMaterial}
         />
         <mesh
           name="Muscle01"
           castShadow
-          receiveShadow
           geometry={nodes.Muscle01.geometry}
           material={materials.MuscleMaterial}
         />
         <mesh
           name="Muscle201"
           castShadow
-          receiveShadow
           geometry={nodes.Muscle201.geometry}
           material={materials.MuscleMaterial2}
         />
         <mesh
           name="Muscle202"
           castShadow
-          receiveShadow
           geometry={nodes.Muscle202.geometry}
           material={materials.MuscleMaterial2}
         />
         <mesh
           name="OpticNerve"
           castShadow
-          receiveShadow
           geometry={nodes.OpticNerve.geometry}
           material={materials.OpticNerveMaterial}
         />
         <mesh
           name="OpticNerveCovering"
           castShadow
-          receiveShadow
+
           geometry={nodes.OpticNerveCovering.geometry}
           material={materials.ScleraMaterial}
         />
         <mesh
           name="Retina"
           castShadow
-          receiveShadow
           geometry={nodes.Retina.geometry}
           material={materials.RetinaMaterial}
         />
         <mesh
           name="Sclera01"
           castShadow
-          receiveShadow
           geometry={nodes.Sclera01.geometry}
           material={materials.ScleraMaterial}
         />
         <mesh
           name="Sclera04"
           castShadow
-          receiveShadow
           geometry={nodes.Sclera04.geometry}
           material={materials.ScleraMaterial}
         />
         <mesh
           name="Sclera05"
           castShadow
-          receiveShadow
           geometry={nodes.Sclera05.geometry}
           material={materials.ScleraMaterial}
         />
         <mesh
           name="Sclera06"
           castShadow
-          receiveShadow
           geometry={nodes.Sclera06.geometry}
           material={materials.ScleraMaterial}
         />
         <mesh
           name="Sclera07"
           castShadow
-          receiveShadow
           geometry={nodes.Sclera07.geometry}
           material={materials.ScleraMaterial}
         />
         <mesh
           name="Sclera08"
           castShadow
-          receiveShadow
           geometry={nodes.Sclera08.geometry}
           material={materials.ScleraMaterial}
         />
         <mesh
           name="SuspensoryLigaments01"
           castShadow
-          receiveShadow
           geometry={nodes.SuspensoryLigaments01.geometry}
           material={materials.SuspensoryLigamentsMaterial}
         />
         <mesh
           name="SuspensoryLigaments02"
           castShadow
-          receiveShadow
           geometry={nodes.SuspensoryLigaments02.geometry}
           material={materials.SuspensoryLigamentsMaterial}
         />
         <mesh
           name="Vein"
           castShadow
-          receiveShadow
           geometry={nodes.Vein.geometry}
           material={materials.VeinMaterial}
         />
