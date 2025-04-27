@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 import Desease from '../Desease.jsx';
+import './Myopia.css';
 
 const DefinitionTab = lazy(() => import('./tabs/DefinitionTab.jsx'));
 const SymptomsTab = lazy(() => import('./tabs/SymptomsTab.jsx'));
@@ -17,7 +18,7 @@ export default function Myopia() {
     { eventKey: 'definition', title: '¿Qué es?' },
     { eventKey: 'symptoms', title: 'Síntomas' },
     { eventKey: 'treatment', title: 'Tratamiento' },
-    { eventKey: 'prevention', title: 'Prevención y Autocuidado', tabClassName: 'rounded-pill' },
+    { eventKey: 'prevention', title: 'Prevención y Autocuidado' },
   ];
 
   const Definitions = {
