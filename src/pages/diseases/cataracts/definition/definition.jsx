@@ -7,18 +7,12 @@ import Lights from "./Lights/Lights";
 
 export default function definition() {
   return (
-    <div className="container">
-      <div className="header">
-        <img src="/images/eye-cataracts.webp" alt="eye" className="main-image" />
-        <div className="title-overlay">CATARATA OCULAR</div>
-      </div>
-
       <div className="content">
         <div className="info-section">
           <div className="section-title">¿Qué son?</div>
           <p>
           Las cataratas oculares son una condición visual común que ocurre cuando el cristalino 
-          del ojo (una estructura transparente que ayuda a enfocar la luz) se vuelve opaco o nublado. 
+          del ojo se vuelve opaco o nublado. 
           Esta opacidad dificulta el paso de la luz y provoca una visión borrosa, descolorida o con destellos. 
           </p>
           <p>
@@ -27,7 +21,6 @@ export default function definition() {
           enfermedades o el uso prolongado de ciertos medicamentos. 
           </p>
           <p>
-          Las cataratas afectan la visión y, por ende, la calidad de vida de la persona que padece esta condición. 
           Sus principales efectos son:
           </p>
           <ul>
@@ -35,11 +28,6 @@ export default function definition() {
             <li>Aumento de la sensibilidad a la luz</li>
             <li>Fatiga visual y dolores de cabeza</li>
           </ul>
-          <p>
-          Estos efectos impactan significativamente la vida cotidiana, ya que dificultan la realización de diversas 
-          actividades y aumentan el riesgo de caídas o errores debido a la pérdida de agudeza visual y 
-          de la percepción de los colores.
-          </p>
         </div>
 
         <div className="diagram-section">
@@ -49,11 +37,10 @@ export default function definition() {
                 <Lights />
                 <Eye position={[0, 0, 0]} />
 
-                <mesh receiveShadow position={[0, -1, 0]}>
-                  <planeGeometry args={[10, 10]} />
+                <mesh receiveShadow position={[0, -2, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+                  <planeGeometry args={[15, 15]} />
                   <shadowMaterial transparent opacity={0.3} />
                 </mesh>
-
 
               </Suspense>
               <OrbitControls />
@@ -61,6 +48,5 @@ export default function definition() {
           </div>
         </div>
       </div>
-    </div>
   );
 }

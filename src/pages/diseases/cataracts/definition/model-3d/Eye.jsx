@@ -11,20 +11,19 @@ export function Eye(props) {
   })
 
   return (
-    <group ref={groupRef} {...props} dispose={null} scale={[5.5, 5.5, 5.5]}>
+    <group ref={groupRef} {...props} dispose={null} scale={[5, 5, 5]}>
       <mesh
         castShadow
-        receiveShadow
         geometry={nodes.EyePupil.geometry}
         material={materials.EyePupil}
       />
       <mesh
         castShadow
-        receiveShadow
         geometry={nodes.EyeContour.geometry}
         material={materials.EyeContour}
       />
       <mesh
+        castShadow
         geometry={nodes.EyeShape.geometry}
         material={materials.EyeShape}
       />
