@@ -31,6 +31,6 @@ header .nav-item .nav-link.active{
     text-decoration: underline;
 }
 
-header .nav-item link:hover{
+header .nav-item .nav-link:hover{
     color: var(--color-5);
 }

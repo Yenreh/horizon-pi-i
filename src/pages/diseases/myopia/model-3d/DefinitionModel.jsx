@@ -3,8 +3,8 @@ import { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
-export function Eye(props) {
-  const { nodes, materials } = useGLTF('/models-3d/myopia/eye-myopia.glb')
+export function DefinitionModel(props) {
+  const { nodes, materials } = useGLTF('/models-3d/myopia/model-1.glb')
   const groupRef = useRef()
 
   useFrame(({ clock }) => {

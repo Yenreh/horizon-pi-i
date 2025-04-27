@@ -1,24 +1,26 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Home from "./pages/home/Home";
-import Definition from "./pages/diseases/cataracts/definition/definition";
-import Myopia from "./pages/diseases/myopia/definition/Myopia";
-import RetinaDetachment from "./pages/diseases/retina-detachment/RetinaDetachment";
-import NotFound from "./pages/not-found/NotFound";
+import { Suspense, lazy } from "react";
+import Layout from "./layout/Layout";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
-import Layout from "./layout/Layout";
+
+const Home = lazy(() => import("./pages/home/Home"));
+const Cataracts = lazy(() => import("./pages/diseases/cataracts/Cataracts"));
+const Myopia = lazy(() => import("./pages/diseases/myopia/Myopia.jsx"));
+const NotFound = lazy(() => import("./pages/not-found/NotFound"));
 
 createRoot(document.getElementById("root")).render(
     <BrowserRouter>
         <Layout>
-            <Routes>
-                <Route index path="/" element={<Home />} />
-                <Route path="*" element={<NotFound />} />
-                <Route path="/cataratas" element={<Definition />} />
-                <Route path="/miopia" element={<Myopia />} />
-                <Route path="/desprendimiento_retina" element={<RetinaDetachment/>} />
-            </Routes>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                    <Route index path="/" element={<Home />} />
+                    <Route path="*" element={<NotFound />} />
+                    <Route path="/cataratas" element={<Cataracts />} />
+                    <Route path="/miopia" element={<Myopia />} />
+                </Routes>
+            </Suspense>
         </Layout>
     </BrowserRouter>
 );
