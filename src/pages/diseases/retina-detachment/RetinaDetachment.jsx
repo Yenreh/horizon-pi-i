@@ -74,7 +74,7 @@ const RetinaDetachment = () => {
                 maxPolarAngle={1.75}
                 minPolarAngle={1}
                 maxAzimuthAngle={1.75}
-                minAzimuthAngle={-1.45}
+                minAzimuthAngle={-0.75}
               />
             </Canvas>
           </div>
