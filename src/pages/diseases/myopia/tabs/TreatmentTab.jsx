@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -6,10 +7,10 @@ import { Model as TreatmentModel } from '../model-3d/TreatmentModel.jsx';
 
 export default function TreatmentTab() {
   return (
-    <section className="myopia-content py-4 px-md-3">
+    <section className="desease-content py-4 px-md-3">
       <Row className="align-items-center gy-4">
         <Col md={6}>
-          <div className="myopia-canvas-wrapper">
+          <div className="desease-canvas-wrapper">
             <Canvas camera={{ position: [0, 0.5, 2.5] }} shadows>
               <Suspense fallback={null}>
                 <TreatmentModel position={[0, 0, 0]} />
@@ -19,7 +20,7 @@ export default function TreatmentTab() {
           </div>
         </Col>
         <Col md={6}>
-          <div className="myopia-text-definition p-4">
+          <div className="desease-text-definition p-4">
             <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>
               Opciones de Tratamiento
             </h2>
