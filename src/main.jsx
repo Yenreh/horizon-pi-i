@@ -8,6 +8,7 @@ import "./index.css";
 const Home = lazy(() => import("./pages/home/Home"));
 const Cataracts = lazy(() => import("./pages/diseases/cataracts/Cataracts"));
 const Myopia = lazy(() => import("./pages/diseases/myopia/Myopia.jsx"));
+const RetinaDetachment = lazy(() => import("./pages/diseases/retina-detachment/RetinaDetachment.jsx"));
 const NotFound = lazy(() => import("./pages/not-found/NotFound"));
 
 createRoot(document.getElementById("root")).render(
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")).render(
                     <Route path="*" element={<NotFound />} />
                     <Route path="/cataratas" element={<Cataracts />} />
                     <Route path="/miopia" element={<Myopia />} />
+                    <Route path="/desprendimiento_retina" element={<RetinaDetachment />} />
                 </Routes>
             </Suspense>
         </Layout>
