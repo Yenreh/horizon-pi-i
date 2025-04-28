@@ -1,12 +1,13 @@
 import React, { useRef, useMemo } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { RepeatWrapping } from "three";
+import { ClampToEdgeWrapping } from "three";
+import * as THREE from "three";
 
 export function IrritatedEye(props) {
   const { nodes } = useGLTF("/models-3d/conjunctivitis/irritated-eye.glb");
   const groupRef = useRef();
-  
+
   const baseColorMap = useTexture(
     "/textures/conjunctivitis/irritatedEyeBaseColor.jpg"
   );
@@ -22,8 +23,8 @@ export function IrritatedEye(props) {
 
   useMemo(() => {
     [baseColorMap, aoMap, normalMap, roughnessMap].forEach((tex) => {
-      tex.wrapS = RepeatWrapping;
-      tex.wrapT = RepeatWrapping;
+      tex.wrapS = ClampToEdgeWrapping;
+      tex.wrapT = ClampToEdgeWrapping;
     });
   }, [baseColorMap, aoMap, normalMap, roughnessMap]);
 
@@ -36,16 +37,25 @@ export function IrritatedEye(props) {
       ref={groupRef}
       {...props}
       dispose={null}
-      scale={[100, 100, 100]}
-      rotation={[Math.PI, 0, 0]}
+      scale={[75, 75, 75]}
+      rotation={[0, 0, 0]}
     >
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.IrritatedEye.geometry}
-        onUpdate={(self) => {
-          if (self.geometry.attributes.uv && !self.geometry.attributes.uv2) {
-            self.geometry.setAttribute("uv2", self.geometry.attributes.uv);
+        ref={(mesh) => {
+          if (
+            mesh &&
+            mesh.geometry &&
+            mesh.geometry.attributes.uv &&
+            !mesh.geometry.attributes.uv2
+          ) {
+            const uv = mesh.geometry.attributes.uv;
+            mesh.geometry.setAttribute(
+              "uv2",
+              new THREE.BufferAttribute(uv.array, 2)
+            );
           }
         }}
       >
