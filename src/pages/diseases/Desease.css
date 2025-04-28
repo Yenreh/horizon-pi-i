@@ -2,7 +2,7 @@
     background-color: var(--color-0);
     color: var(--color-3);
     min-height: 100vh;
-    overflow-x: hidden; /
+    overflow-x: hidden;
 }
 
 .desease-header {
