@@ -18,10 +18,10 @@ export default function Definition() {
                 <mesh
                   receiveShadow
                   rotation={[-Math.PI / 2, 0, 0]}
-                  position={[0, -0.6, 0]}
+                  position={[0, -1, 0]}
                 >
                   <planeGeometry args={[10, 10]} />
-                  <shadowMaterial transparent opacity={0.3} />
+                  <shadowMaterial opacity={0.7} />
                 </mesh>
               </Suspense>
               <OrbitControls enableZoom={false} />
