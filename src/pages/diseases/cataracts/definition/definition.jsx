@@ -13,7 +13,7 @@ export default function definition() {
             <Canvas camera={{ position: [0, 1, 3]}} shadows>
               <Suspense fallback={null}>
                 <Lights />
-                <Eye position={[0, 0, 0]} />
+                <Eye position={[0, 0, 0]}/>
 
                 <mesh receiveShadow position={[0, -2, 0]} rotation={[-Math.PI / 2, 0, 0]}>
                   <planeGeometry args={[15, 15]} />
@@ -21,7 +21,7 @@ export default function definition() {
                 </mesh>
 
               </Suspense>
-              <OrbitControls />
+              <OrbitControls enableZoom={false}/>
             </Canvas>
           </div>
         </div>
