@@ -12,12 +12,18 @@ export default function DefinitionModelLights() {
       <ambientLight intensity={1} />
       <directionalLight 
         ref={directionalLightRef}
-        position={[0, 0, 5]}
+        position={[0, 5, 0]} 
         intensity={1}
-        castShadow={false}
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-        shadow-bias={-0.001}
+        castShadow
+        shadow-mapSize-width={4096} 
+        shadow-mapSize-height={4096}
+        shadow-bias={0.001}
+        shadow-camera-near={0.5}
+        shadow-camera-far={100}
+        shadow-camera-left={-100}
+        shadow-camera-right={100}
+        shadow-camera-top={100}
+        shadow-camera-bottom={-100}
       />
     </>
   )
