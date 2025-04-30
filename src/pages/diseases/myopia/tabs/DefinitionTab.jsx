@@ -16,7 +16,7 @@ export default function DefinitionTab() {
               <Suspense fallback={null}>
                 <DefinitionModelLights />
                 <DefinitionModel position={[0, 0, 0]} />
-                <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.4, 0]}>
+                <mesh receiveShadow={true} rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.4, 0]}>
                   <planeGeometry args={[15, 15]} />
                   <shadowMaterial transparent opacity={0.3} />
                 </mesh>

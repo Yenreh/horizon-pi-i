@@ -14,7 +14,7 @@ export default function DefinitionModelLights() {
         ref={directionalLightRef}
         position={[0, 5, 0]} 
         intensity={1}
-        castShadow
+        castShadow={true}
         shadow-mapSize-width={4096} 
         shadow-mapSize-height={4096}
         shadow-bias={0.001}
