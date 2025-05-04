@@ -68,7 +68,7 @@ export function Girl(props) {
       </a.group>
       
       <mesh castShadow geometry={nodes.Bow.geometry} material={materials.Bow} />
-      <mesh receiveShadow geometry={nodes.Base.geometry} material={materials.Base} />
+      {/* <mesh receiveShadow geometry={nodes.Base.geometry} material={materials.Base} /> */}
       <mesh
         castShadow
         geometry={nodes.Eyebrows.geometry}
