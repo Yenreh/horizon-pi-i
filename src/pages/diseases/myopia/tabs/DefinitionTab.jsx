@@ -1,24 +1,43 @@
 /* eslint-disable react/no-unknown-property */
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Loader} from '@react-three/drei';
+import { OrbitControls, Text } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
 import { DefinitionModel } from '../model-3d/DefinitionModel.jsx';
 import DefinitionModelLights from '../Lights/DefinitionModelLights.jsx';
+import DefinitionStaging from '../Staging/DefinitionStaging.jsx';
+import { LuRotate3D } from "react-icons/lu";
+
 export default function DefinitionTab() {
   return (
     <section className="desease-content py-4 px-md-3">
       <Row className="align-items-center gy-4">
         <Col md={6}>
-          <div className="desease-canvas-wrapper">
+          <div className="desease-canvas-wrapper position-relative">
+            {/* 3D Model Icon */}
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
+              <LuRotate3D title="Modelo 3D" />
+            </div>
             <Canvas camera={{ position: [0, 0.5, 2.5] }} shadows>
               <Suspense fallback={null}>
                 <DefinitionModelLights />
+                <DefinitionStaging />
                 <DefinitionModel position={[0, 0, 0]} scale={100} rotation={[Math.PI, 0, 0]} />
                 <mesh receiveShadow={true} rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.4, 0]}>
                   <planeGeometry args={[15, 15]} />
                   <meshStandardMaterial color="white" roughness={0.8} metalness={1} />
                 </mesh>
+                {/* Help Text */}
+                <Text
+                  position={[0, 1.2, 0.8]}
+                  color={"#020873"}
+                  anchorX={"center"}
+                  anchorY={"middle"}
+                  fontSize={0.08}
+                  backgroundColor={"red"}
+                >
+                  Usa las flechas izquierda y derecha para rotar el modelo
+                </Text>
                 <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>
             </Canvas>
@@ -45,7 +64,8 @@ export default function DefinitionTab() {
             <p>
               Suele aparecer en la niñez y puede aumentar con los años. Se corrige fácilmente con gafas, lentes de contacto o, en algunos casos, cirugía láser.
             </p>
-          </div> </Col>
+          </div>
+        </Col>
       </Row>
     </section>
   );

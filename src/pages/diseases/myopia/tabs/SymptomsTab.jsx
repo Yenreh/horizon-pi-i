@@ -6,13 +6,17 @@ import { Row, Col } from 'react-bootstrap';
 import SymptomsModel from '../model-3d/SymptomsModel.jsx';
 import SymptomsModelLights from '../Lights/SymptomsModelLights.jsx';
 import SymptomsStaging from '../Staging/SymptomsStaging.jsx';
+import { LuRotate3D } from "react-icons/lu";
 
 export default function SymptomsTab() {
   return (
     <section className="desease-content py-4 px-md-3">
       <Row className="align-items-center gy-4">
         <Col md={6}>
-          <div className="desease-canvas-wrapper">
+          <div className="desease-canvas-wrapper position-relative">
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
+              <LuRotate3D title="Modelo 3D" />
+            </div>
             <Canvas camera={{ position: [0, 1, 2] }} shadows={true}>
               <Suspense fallback={null}>
                 <SymptomsStaging />
