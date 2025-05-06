@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text } from '@react-three/drei';
+import { OrbitControls, Text, ContactShadows } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
 import { DefinitionModel } from '../model-3d/DefinitionModel.jsx';
 import DefinitionModelLights from '../Lights/DefinitionModelLights.jsx';
@@ -27,14 +27,20 @@ export default function DefinitionTab() {
                   <planeGeometry args={[15, 15]} />
                   <meshStandardMaterial color="white" roughness={0.8} metalness={1} />
                 </mesh>
-                {/* Help Text */}
+                {/* Contact Shadows */}
+                <ContactShadows
+                  position={[0, -1.3, 0]}
+                  opacity={0.5}
+                  scale={10}
+                  blur={2}
+                  far={2}
+                />
                 <Text
                   position={[0, 1.2, 0.8]}
                   color={"#020873"}
                   anchorX={"center"}
                   anchorY={"middle"}
                   fontSize={0.08}
-                  backgroundColor={"red"}
                 >
                   Usa las flechas izquierda y derecha para rotar el modelo
                 </Text>

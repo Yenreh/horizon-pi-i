@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text } from '@react-three/drei';
+import { OrbitControls, Text, ContactShadows } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
 import SymptomsModel from '../model-3d/SymptomsModel.jsx';
 import SymptomsModelLights from '../Lights/SymptomsModelLights.jsx';
@@ -26,17 +26,24 @@ export default function SymptomsTab() {
                   <circleGeometry args={[4, 8]} />
                   <meshStandardMaterial roughness={0.8} metalness={1} />
                 </mesh>
+                {/* Contact Shadows */}
+                <ContactShadows
+                  position={[0, -1.3, 0]}
+                  opacity={0.5}
+                  scale={10}
+                  blur={2}
+                  far={5}
+                />
                 {/* Help Text */}
-                  <Text
-                    position={[0,0.95, 0.8]}
-                    color={"#020873"}
-                    anchorX={"center"}
-                    anchorY={"middle"}
-                    fontSize={0.065}
-                    backgroundColor={"red"}
-                  >
-                    Puedes usar W,A,S,D para rotar y acercar/alejar el modelo
-                  </Text>
+                <Text
+                  position={[0, 0.95, 0.8]}
+                  color={"#020873"}
+                  anchorX={"center"}
+                  anchorY={"middle"}
+                  fontSize={0.065}
+                >
+                  Puedes usar W,A,S,D para rotar y acercar/alejar el modelo
+                </Text>
                 <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>
             </Canvas>

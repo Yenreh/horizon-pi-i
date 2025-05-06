@@ -6,11 +6,11 @@ export default function DefinitionModelLights() {
 
   return (
     <>
-      <ambientLight intensity={1.5} />
+      <ambientLight intensity={2} />
       <directionalLight 
         ref={directionalLightRef}
         position={[0, 5, 0]} 
-        intensity={1}
+        intensity={2}
         castShadow={true}
       />
     </>
