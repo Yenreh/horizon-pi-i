@@ -26,29 +26,25 @@ export default function DefinitionTab() {
           </div>
         </Col>
         <Col md={6}>
-          <div className="desease-text-definition p-4">
+          <div className="disease-text-definition p-4">
             <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>
               ¿Qué es la miopía?
             </h2>
             <h4 className="mb-4" style={{ color: 'var(--color-5)' }}>
-              Un enfoque que “se queda corto”
+              Cuando lo lejano se ve borroso
             </h4>
             <p>
-              La miopía es un error refractivo del ojo que provoca que los rayos de luz
-              converjan por delante de la retina. Como resultado, los objetos lejanos se ven
-              borrosos, mientras que los cercanos permanecen nítidos.
+              La miopía es un problema común de la vista que dificulta ver con claridad los objetos lejanos, mientras que los cercanos se ven bien. Ocurre porque el ojo no enfoca correctamente la luz, haciendo que las imágenes se formen antes de llegar a la retina.
             </p>
             <ul>
-              <li><strong>Clasificación:</strong> Miopía leve (≤ −3,00 D), moderada (−3,00 a −6,00 D) y alta (&gt; −6,00 D).</li>
-              <li><strong>Prevalencia:</strong> Afecta aproximadamente al 30 % de la población mundial.</li>
-              <li><strong>Factores de riesgo:</strong> Historia familiar, uso excesivo de dispositivos digitales, poca exposición a luz natural.</li>
-              <li><strong>Complicaciones:</strong> Riesgo aumentado de desprendimiento de retina, glaucoma y cataratas prematuras.</li>
-              <li><strong>Diagnóstico:</strong> Medición de agudeza visual y refracción por parte de un profesional de la visión.</li>
+              <li><strong>Tipos:</strong> Se clasifica en leve (hasta -3.00), moderada (de -3.00 a -6.00) y alta (más de -6.00), números que indican la graduación necesaria para corregirla.</li>
+              <li><strong>¿Es frecuente?</strong> La tienen 1 de cada 3 personas en el mundo.</li>
+              <li><strong>Causas comunes:</strong> Genética, uso prolongado de pantallas y pasar poco tiempo al aire libre.</li>
+              <li><strong>Posibles riesgos:</strong> En casos avanzados, podría aumentar el riesgo de otros problemas oculares graves.</li>
+              <li><strong>¿Cómo se detecta?</strong> Con un sencillo examen de la vista realizado por un especialista.</li>
             </ul>
             <p>
-              Suele detectarse en la infancia y puede progresar hasta la adultez. Se corrige
-              habitualmente con gafas cóncavas, lentes de contacto o, en ciertos casos,
-              cirugía refractiva.
+              Suele aparecer en la niñez y puede aumentar con los años. Se corrige fácilmente con gafas, lentes de contacto o, en algunos casos, cirugía láser.
             </p>
           </div>
         </Col>
