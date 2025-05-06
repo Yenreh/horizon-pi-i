@@ -28,14 +28,14 @@ export default function SymptomsTab() {
                 </mesh>
                 {/* Help Text */}
                   <Text
-                    position={[0, -0.8, 0.8]}
+                    position={[0,0.95, 0.8]}
                     color={"#020873"}
                     anchorX={"center"}
                     anchorY={"middle"}
-                    fontSize={0.05}
+                    fontSize={0.065}
                     backgroundColor={"red"}
                   >
-                    Usa las flechas izquierda y derecha para rotar el modelo
+                    Puedes usar W,A,S,D para rotar y acercar/alejar el modelo
                   </Text>
                 <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>

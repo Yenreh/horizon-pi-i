@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
@@ -7,21 +7,62 @@ export function SymptomsModel(props) {
     const { nodes, materials } = useGLTF('/models-3d/myopia/model-2.glb')
     const groupRef = useRef()
 
-    useFrame(({ clock, camera }) => {
-        const elapsedTime = clock.getElapsedTime()
-        const zoomFactor = Math.sin(elapsedTime) * 0.5 + 0.5 
+    // Variables para controlar la rotación y traslación manual
+    let rotationSpeed = 0
+    let translationSpeed = 0
 
-    
-        camera.zoom = 1 + zoomFactor * 0.5 
-        camera.updateProjectionMatrix()
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            const key = event.key.toUpperCase() // Convertir la tecla a mayúsculas
+            if (key === 'A') {
+                rotationSpeed = -0.02 // Rotar hacia la izquierda
+            } else if (key === 'D') {
+                rotationSpeed = 0.02 // Rotar hacia la derecha
+            } else if (key === 'W') {
+                translationSpeed = -0.1 // Acercar (mover hacia adelante en el eje Z)
+            } else if (key === 'S') {
+                translationSpeed = 0.1 // Alejar (mover hacia atrás en el eje Z)
+            }
+        }
 
-        //Simulate a zoom effect by adjusting the camera's position
-        const blurAmount = 1 - zoomFactor 
-        materials.SnellenTableMaterial.roughness = blurAmount 
-        materials.SnellenTableMaterial.metalness = blurAmount * 0.3 
-        materials.SnellenTableMaterial.emissiveIntensity = blurAmount * 0.5
+        const handleKeyUp = (event) => {
+            const key = event.key.toUpperCase() // Convertir la tecla a mayúsculas
+            if (key === 'A' || key === 'D') {
+                rotationSpeed = 0 // Detener la rotación al soltar la tecla
+            } else if (key === 'W' || key === 'S') {
+                translationSpeed = 0 // Detener la traslación al soltar la tecla
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown)
+        window.addEventListener('keyup', handleKeyUp)
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown)
+            window.removeEventListener('keyup', handleKeyUp)
+        }
+    }, [])
+
+
+    useFrame(({ clock }) => {
+        // Rotación automática leve
+        groupRef.current.rotation.y +=  Math.sin(clock.getElapsedTime()) * 0.001
     
+        // Rotación manual
+        groupRef.current.rotation.y += rotationSpeed
+    
+        // Traslación manual en el eje Z
+        if (groupRef.current) {
+            groupRef.current.position.z += translationSpeed
+            // Limitar la traslación para evitar que el objeto se aleje demasiado o se acerque demasiado
+            if (groupRef.current.position.z > 5) {
+                groupRef.current.position.z = 5
+            } else if (groupRef.current.position.z < -5) {
+                groupRef.current.position.z = -5
+            }
+        }
     })
+
     return (
         <group ref={groupRef} {...props} dispose={null}>
             <mesh
