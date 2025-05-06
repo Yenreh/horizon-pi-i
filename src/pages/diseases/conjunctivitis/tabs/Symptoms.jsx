@@ -4,6 +4,8 @@ import { Row, Col } from "react-bootstrap";
 import Lights from "../Lights/Lights.jsx";
 import { FaceEye } from "../model-3d/FaceEye.jsx";
 import SymptomsControls from "../controls/SymptomsControls.jsx";
+import Text from "../texts/Text"
+import Staging from "../staging/Staging.jsx";
 
 export default function Symptoms() {
   return (
@@ -14,6 +16,8 @@ export default function Symptoms() {
             <Canvas camera={{ position: [0, 0.5, 2.5], fov: 20 }} shadows>
               <Suspense fallback={null}>
                 <Lights />
+                <Staging />
+                <Text textContent={"3D"} />
                 <FaceEye position={[0, 0, 0]} />
                 <mesh
                   receiveShadow
