@@ -42,6 +42,10 @@
     0 -1px 0 var(--color-5);
 }
 
+.desease-tabs{
+    font-size: 1.15rem;
+}
+
 .desease-tabs .nav-link.active,
 .desease-tabs .nav-link {
     background-color: transparent;
