@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, SoftShadows } from '@react-three/drei';
+import { OrbitControls, Loader} from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
 import { DefinitionModel } from '../model-3d/DefinitionModel.jsx';
 import DefinitionModelLights from '../Lights/DefinitionModelLights.jsx';
@@ -19,7 +19,6 @@ export default function DefinitionTab() {
                   <planeGeometry args={[15, 15]} />
                   <meshStandardMaterial color="white" roughness={0.8} metalness={1} />
                 </mesh>
-                <SoftShadows size={5} samples={40} focus={2} />
                 <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>
             </Canvas>
@@ -46,8 +45,7 @@ export default function DefinitionTab() {
             <p>
               Suele aparecer en la niñez y puede aumentar con los años. Se corrige fácilmente con gafas, lentes de contacto o, en algunos casos, cirugía láser.
             </p>
-          </div>
-        </Col>
+          </div> </Col>
       </Row>
     </section>
   );

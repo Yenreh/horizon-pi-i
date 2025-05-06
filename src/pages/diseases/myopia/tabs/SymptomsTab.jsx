@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, SoftShadows } from '@react-three/drei';
+import { OrbitControls} from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
 import SymptomsModel from '../model-3d/SymptomsModel.jsx';
 import SymptomsModelLights from '../Lights/SymptomsModelLights.jsx';
