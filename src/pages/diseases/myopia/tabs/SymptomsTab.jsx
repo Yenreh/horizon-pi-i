@@ -20,18 +20,39 @@ export default function SymptomsTab() {
           </div>
         </Col>
         <Col md={6}>
-          <div className="desease-text-definition p-4">
-            <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>
-              Síntomas Comunes de la Miopía
-            </h2>
-            <p>Aquí se describirán los síntomas más frecuentes...</p>
-            <ul>
-              <li>Visión borrosa de objetos lejanos.</li>
-              <li>Necesidad de entrecerrar los ojos para ver claro.</li>
-              <li>Dolores de cabeza por esfuerzo visual.</li>
-              <li>Fatiga visual al conducir o practicar deportes.</li>
-            </ul>
-          </div>
+        <div className="disease-text-definition p-4">
+  <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>
+    Síntomas comunes de la miopía
+  </h2>
+  <p>
+    Reconocer estos signos temprano ayuda a buscar solución a tiempo. La miopía suele manifestarse con:
+  </p>
+  <ul>
+    <li>
+      <strong>Dificultad para ver de lejos:</strong><br/>
+      Letreros, pantallas de cine o rostros a distancia parecen "desenfocados".
+    </li>
+    <li>
+      <strong>Entrecerrar los ojos habitualmente:</strong><br/>
+      Es un gesto automático para intentar enfocar mejor.
+    </li>
+    <li>
+      <strong>Dolores de cabeza frecuentes:</strong><br/>
+      Sobre todo después de actividades que requieren mirar lejos (conducir, clases en pizarra).
+    </li>
+    <li>
+      <strong>Cansancio ocular:</strong><br/>
+      Sensación de pesadez en los ojos al final del día, especialmente tras usar pantallas.
+    </li>
+    <li>
+      <strong>Problemas en actividades cotidianas:</strong><br/>
+      Dificultad para leer matrículas, seguir pelotas en deportes o identificar detalles en paisajes.
+    </li>
+  </ul>
+  <p class="mt-3">
+    <small>¿Notas varios de estos síntomas? Una revisión visual sencilla puede confirmarlo.</small>
+  </p>
+</div>
         </Col>
       </Row>
     </section>
