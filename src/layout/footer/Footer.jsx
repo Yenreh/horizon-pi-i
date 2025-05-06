@@ -33,7 +33,7 @@ const Footer = () => {
             <ul className="list-unstyled d-flex flex-column gap-2">
               <li>
                 <Link className="text-decoration-none" to="/">
-                  Home
+                  Inicio
                 </Link>
               </li>
               <li>

@@ -1,4 +1,4 @@
-header  {
+header {
     background-color: var(--color-2);
     color: var(--color-1);
 }
@@ -19,18 +19,50 @@ header .navbar-toggler:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-header .navbar-brand span{
+header .navbar-brand span {
     color: var(--color-0);
-    
-}
-header .nav-item .nav-link{
-    color: var(--color-0);
-}
-header .nav-item .nav-link.active{
-    color: var(--color-5);
-    text-decoration: underline;
+
 }
 
-header .nav-item .nav-link:hover{
+header .nav-item .nav-link {
+    color: var(--color-0);
+}
+
+header .nav-item .nav-link.active {
+    color: var(--color-5);
+}
+
+header .nav-item .nav-link:hover,
+header .nav-item .nav-link:active {
+    color: var(--color-5);
+}
+
+header .navbar-nav .nav-link.active,
+header .navbar-nav .nav-link.show {
+    color: var(--color-5);
+}
+
+header .dropdown-menu {
+    background-color: var(--color-2);
+    border: none;
+}
+
+header .dropdown-item {
+    color: var(--color-0);
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header .dropdown-item:hover {
+    background-color: var(--color-5);
+    color: var(--color-1);
+}
+
+header .dropdown-item.active {
+    background-color: var(--color-5);
+    color: var(--color-1);
+}
+
+header .dropdown.active>.dropdown-toggle {
     color: var(--color-5);
 }

@@ -196,7 +196,7 @@
 @media (max-width: 768px) {
     .carousel-card {
         flex: 0 0 240px;
-        height: 360px;
+        height: 390px;
     }
     .home-section-title {
         width: 100%;
@@ -206,7 +206,7 @@
 @media (max-width: 576px) {
     .carousel-card {
         flex: 0 0 200px;
-        height: 340px;
+        height: 450px;
     }
 
     .carousel-card .card-img-top {
