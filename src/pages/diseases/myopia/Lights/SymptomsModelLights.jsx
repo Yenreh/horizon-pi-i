@@ -1,13 +1,11 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef } from 'react'
-import { useHelper } from '@react-three/drei'
-import { DirectionalLightHelper } from 'three';
-import { useFrame } from '@react-three/fiber'
+import { useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
 import { MathUtils } from 'three';
 
 export default function SymptomsModelLights() {
     const directionalLightRef = useRef();
-    // useHelper(directionalLightRef, DirectionalLightHelper);
+  
     useFrame((state) => {
       const elapsedTime = state.clock.getElapsedTime();
       directionalLightRef.current.position.x = MathUtils.lerp(

@@ -13,8 +13,8 @@ export default function SymptomsTab() {
       <Row className="align-items-center gy-4">
         <Col md={6}>
           <div className="desease-canvas-wrapper">
-            <Suspense fallback={null}>
-              <Canvas camera={{ position: [0, 1, 2] }} shadows={true}>
+            <Canvas camera={{ position: [0, 1, 2] }} shadows={true}>
+              <Suspense fallback={null}>
                 <SymptomsStaging />
                 <SymptomsModelLights />
                 <SymptomsModel position={[0, 0, 0]} scale={6} />
@@ -22,10 +22,9 @@ export default function SymptomsTab() {
                   <circleGeometry args={[4, 8]} />
                   <meshStandardMaterial roughness={0.8} metalness={1} />
                 </mesh>
-                <SoftShadows size={5} samples={40} focus={2} />
                 <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
-              </Canvas>
-            </Suspense>
+              </Suspense>
+            </Canvas>
           </div>
         </Col>
         <Col md={6}>
@@ -58,7 +57,7 @@ export default function SymptomsTab() {
                 Dificultad para leer matrículas, seguir pelotas en deportes o identificar detalles en paisajes.
               </li>
             </ul>
-            <p class="mt-3">
+            <p className="mt-3">
               <small>¿Notas varios de estos síntomas? Una revisión visual sencilla puede confirmarlo.</small>
             </p>
           </div>

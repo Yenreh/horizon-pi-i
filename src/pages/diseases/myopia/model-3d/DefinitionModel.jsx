@@ -12,7 +12,7 @@ export function DefinitionModel(props) {
   })
 
     return (
-        <group ref={groupRef} {...props} dispose={null} scale={[100, 100, 100]} rotation={[Math.PI, 0, 0]}>
+        <group ref={groupRef} {...props} dispose={null}>
             <mesh
                 castShadow
                 geometry={nodes.EyeArtery.geometry}

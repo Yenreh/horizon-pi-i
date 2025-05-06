@@ -1,11 +1,10 @@
 /* eslint-disable react/no-unknown-property */
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, SoftShadows } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
 import { DefinitionModel } from '../model-3d/DefinitionModel.jsx';
 import DefinitionModelLights from '../Lights/DefinitionModelLights.jsx';
-
 export default function DefinitionTab() {
   return (
     <section className="desease-content py-4 px-md-3">
@@ -15,13 +14,14 @@ export default function DefinitionTab() {
             <Canvas camera={{ position: [0, 0.5, 2.5] }} shadows>
               <Suspense fallback={null}>
                 <DefinitionModelLights />
-                <DefinitionModel position={[0, 0, 0]} />
+                <DefinitionModel position={[0, 0, 0]} scale={100} rotation={[Math.PI, 0, 0]} />
                 <mesh receiveShadow={true} rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.4, 0]}>
                   <planeGeometry args={[15, 15]} />
-                  <shadowMaterial transparent opacity={0.3} />
+                  <meshStandardMaterial color="white" roughness={0.8} metalness={1} />
                 </mesh>
+                <SoftShadows size={5} samples={40} focus={2} />
+                <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>
-              <OrbitControls enableZoom={false} />
             </Canvas>
           </div>
         </Col>
