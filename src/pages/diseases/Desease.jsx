@@ -3,9 +3,6 @@ import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap';
 import './Desease.css';
 
 export default function Desease({ desease, tabs, Definitions }) {
-    console.log(desease);
-    console.log(tabs);
-    console.log(Definitions);
     const [key, setKey] = useState('definition');
 
     const preloadTab = (tab) => {
