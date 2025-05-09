@@ -1,0 +1,18 @@
+/* RdSymptoms.css o tu archivo CSS principal */
+.clickable-canvas {
+    cursor: pointer;
+    border: 2px dashed transparent; /* Borde sutil opcional al hacer hover */
+    transition: border-color 0.3s ease;
+  }
+  
+  .clickable-canvas:hover {
+     border-color: var(--color-2, #ccc); /* Color del borde al pasar el ratón */
+  }
+  
+  .desease-canvas-wrapper {
+      /* Asegúrate de que tenga una altura definida o herede una */
+      height: 400px; /* O la altura que necesites */
+      position: relative; /* Necesario si quieres poner texto superpuesto */
+  }
+  
+  /* Estilos adicionales si los necesitas */
