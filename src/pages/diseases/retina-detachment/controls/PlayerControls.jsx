@@ -136,12 +136,12 @@ export function PlayerControls() {
             controlsRef.current?.lock();
           }}
         >
-          Click to explore
+          Click para explorar
           <br />
-          (W, A, S, D to move, MOUSE to look)
+          (W, A, S, D para moverse, MOUSE para mirar)
           <br />
           <br />
-          Press ESC to release mouse
+          presiona ESC para liberar el mouse
         </Html>
       </>
     );
