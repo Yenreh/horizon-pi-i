@@ -1,14 +1,15 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Canvas } from "@react-three/fiber";
 import { Col, Row } from "react-bootstrap";
 import GoldenGateHills from "../staging/GoldenGateHills";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate
-import './RdSymptoms.css'; // Asegúrate de tener un CSS para el cursor
+import "./RdSymptoms.css"; // Asegúrate de tener un CSS para el cursor
 
 export default function RdSymptoms() {
   const navigate = useNavigate(); // Obtén la función de navegación
 
   const handleCanvasClick = () => {
-    navigate('/moscas-flotantes'); // Navega a la ruta deseada
+    navigate("/moscas-flotantes"); // Navega a la ruta deseada
   };
 
   return (
@@ -34,11 +35,41 @@ export default function RdSymptoms() {
               Síntomas
             </h2>
             <p>
-              Pronto descubrirás en esta sección como esta enfermedad puede
-              afectar a tu salud ocular.
+              El desprendimiento de retina no duele, por eso es fácil ignorarlo.
+              Si notas uno o más de estos síntomas, acude de inmediato al
+              oftalmólogo:
             </p>
-            <p> {/* Añade un texto indicativo si quieres */}
-              <small>Haz clic en la imagen de la izquierda para ver una simulación interactiva de las moscas volantes.</small>
+            <ul>
+              <li>
+                <b>Aumento repentino de "moscas volantes":</b> pequeñas manchas
+                o puntos oscuros que flotan en la visión, más notables en fondos
+                claros.
+              </li>
+              <li>
+                <b>Destellos de luz (fotopsias):</b> como relámpagos breves en
+                los bordes del campo visual, incluso con los ojos cerrados.
+              </li>
+              <li>
+                <b>Sombra o cortina en la visión:</b> muchas personas describen
+                una zona oscura que va cubriendo parte del campo visual, como si
+                algo se "bajara" frente al ojo.
+              </li>
+              <li>
+                <b>Visión borrosa o distorsionada:</b> dificultad para enfocar,
+                líneas rectas que parecen onduladas o deformadas.
+              </li>
+              <li>
+                <b>Pérdida parcial de la visión:</b> generalmente en los bordes
+                primero, pero puede avanzar hacia el centro si no se trata a
+                tiempo.
+              </li>
+            </ul>
+            <p>
+              {" "}
+              <small>
+                Haz clic en la imagen de la izquierda para ver una simulación
+                interactiva de las moscas volantes.
+              </small>
             </p>
           </div>
         </Col>
