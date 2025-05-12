@@ -1,15 +1,13 @@
 /* eslint-disable react/prop-types */
 // FloatingDots.jsx
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect, Suspense } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Helper function for random number in a range
+// Función para rangos aleatorios
 const randomRange = (min, max) => Math.random() * (max - min) + min;
 
-// --- Dot component remains the same, but we'll adjust style ---
-// eslint-disable-next-line react/prop-types
 function Dot({ initialPosition, speedFactor, amplitude, size, offset }) {
   const groupRef = useRef();
 
@@ -44,9 +42,7 @@ function Dot({ initialPosition, speedFactor, amplitude, size, offset }) {
             width: `${size}px`,
             height: `${size}px`,
             borderRadius: '50%',
-            // --- Adjusted Style: Darker and more opaque ---
-            backgroundColor: 'rgba(20, 20, 40, 0.65)', // Darker, slightly bluish, more opaque
-            // --- Adjusted Style: Slightly more blur for larger size ---
+            backgroundColor: 'rgba(20, 20, 40, 0.65)',
             filter: 'blur(2px)',
           }}
         />
@@ -58,30 +54,53 @@ function Dot({ initialPosition, speedFactor, amplitude, size, offset }) {
 
 // --- Component to manage multiple dots ---
 export default function FloatingDots({
-  // --- Adjusted Defaults ---
-  count = 150, // More dots
-  areaWidth = 8, // Area relative to camera view
-  areaHeight = 6, // Area relative to camera view
-  distance = 3, // Closer distance *in front of* the camera
-  sizeRange = [8, 20], // Larger dots
-  speedRange = [0.05, 0.2], // Slightly slower drift for larger dots might feel better
-  amplitudeRange = [0.1, 0.3], // Reduced amplitude slightly
+  count = 150,
+  areaWidth = 8,
+  areaHeight = 6,
+  distance = 3, // Distancia *en frente* del origen de la cámara
+  sizeRange = [8, 20],
+  speedRange = [0.05, 0.2],
+  amplitudeRange = [0.1, 0.3],
 }) {
-  const { camera } = useThree(); // Get the camera object
-  const groupRef = useRef(); // Ref for the group that will follow the camera
+  const { camera } = useThree(); // Camara
+  const groupRef = useRef(); // Grupo que se ligara a la cmara
 
-  // useMemo to generate dot data only once
+  // useEffect para adjuntar/desadjuntar el grupo a la cámara ---
+  useEffect(() => {
+    const group = groupRef.current;
+    if (group) {
+      // Asegurarse que el grupo empiece sin transformaciones relativas extrañas
+      group.position.set(0, 0, 0);
+      group.quaternion.identity(); // Usar identity() para resetear la rotación
+      group.scale.set(1, 1, 1);
+
+      // Añadir el grupo como hijo de la cámara
+      camera.add(group);
+      // console.log("FloatingDots group added to camera");
+    }
+
+    // Función de limpieza: Se ejecuta cuando el componente se desmonta
+    return () => {
+      if (group) {
+        camera.remove(group);
+        // console.log("FloatingDots group removed from camera");
+      }
+    };
+  }, [camera]); // Ejecutar solo si la instancia de la cámara cambia
+
+  // useMemo to generate dot data only once (sin cambios en la lógica interna)
   const dotsData = useMemo(() => {
     return Array.from({ length: count }).map((_, i) => {
-      // Position relative to the camera-following group
+      // Posición RELATIVA AL GRUPO PADRE (que ahora está en el origen de la cámara)
       const x = randomRange(-areaWidth / 2, areaWidth / 2);
       const y = randomRange(-areaHeight / 2, areaHeight / 2);
-      // Place them on a plane *directly in front* of the camera's current view
+      // Colocarlos en un plano *directamente en frente* del origen de la cámara (local Z negativo)
       const z = -distance;
 
       return {
         id: i,
-        initialPosition: new THREE.Vector3(x, y, z), // Position relative to the parent group
+        // Esta es la posición inicial *dentro* del grupo adjunto a la cámara
+        initialPosition: new THREE.Vector3(x, y, z),
         speedFactor: randomRange(speedRange[0], speedRange[1]),
         amplitude: randomRange(amplitudeRange[0], amplitudeRange[1]),
         size: Math.floor(randomRange(sizeRange[0], sizeRange[1])),
@@ -91,27 +110,21 @@ export default function FloatingDots({
         }
       };
     });
+    // Asegúrate de que las dependencias sean correctas para regenerar si cambian los props
   }, [count, areaWidth, areaHeight, distance, sizeRange, speedRange, amplitudeRange]);
 
-  // --- This useFrame makes the parent group follow the camera ---
-  useFrame(() => {
-    if (groupRef.current) {
-      // Match the group's world position and orientation to the camera's
-      groupRef.current.position.copy(camera.position);
-      groupRef.current.quaternion.copy(camera.quaternion);
-      // Optional: If you want the dots plane to always face the camera *origin*
-      // instead of inheriting camera rotation (might look slightly different with OrbitControls)
-      // groupRef.current.lookAt(camera.position); // Use this instead of quaternion copy if preferred
-    }
-  });
 
   return (
-    // This group's transform will be updated to match the camera
-    <group ref={groupRef}>
-      {/* Render each dot *inside* the camera-following group */}
-      {dotsData.map(dot => (
-        <Dot key={dot.id} {...dot} />
-      ))}
-    </group>
+    // Este grupo será adjuntado programáticamente a la cámara via useEffect
+    // Su posición/rotación será (0,0,0) relativo a la cámara.
+    <Suspense fallback={<div>Loading...</div>}>
+      <group ref={groupRef}>
+        {/* Renderiza cada punto *dentro* del grupo adjunto a la cámara */}
+        {/* La posición de cada Dot se establece relativa a este grupo */}
+        {dotsData.map(dot => (
+          <Dot key={dot.id} {...dot} />
+        ))}
+      </group>
+    </Suspense>
   );
 }

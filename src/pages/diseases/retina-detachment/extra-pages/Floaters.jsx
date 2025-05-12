@@ -3,7 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import GoldenGateHills from "../staging/GoldenGateHills"; // HDRI environment
 import FloatingDots from "../effects/FloatingDots";
 import Ground from "../staging/Ground"; // Importa el nuevo componente de suelo
-// Quitamos Html de aquí si no se usa más dentro del Canvas para estos elementos
 import { useNavigate } from "react-router-dom";
 import "./Floaters.css"; // Asegúrate que este CSS se actualice
 import { useEffect, Suspense } from "react"; // Añadido Suspense
@@ -39,7 +38,7 @@ export default function Floaters() {
       >
         <button
           onClick={handleGoBack}
-          className="back-button-drei" // Puedes reutilizar la clase o crear una nueva
+          className="back-button-drei"
           style={{ pointerEvents: 'auto' }} // Asegura que sea clickeable
         >
           ← Volver
@@ -55,12 +54,12 @@ export default function Floaters() {
           transform: 'translateX(-50%)',
           zIndex: 200,
           textAlign: 'center',
-          color: 'white', // Ejemplo de estilo, ajusta según tu CSS
+          color: 'white',
           // pointerEvents: 'none', // Si el contenedor no debe ser interactivo
         }}
-        className="info-legend-drei" // Puedes reutilizar la clase o crear una nueva
+        className="info-legend-drei" 
       >
-        {/* Si quieres que el texto sea clickeable o tenga hover, necesita pointerEvents: 'auto' */}
+        {/* Clickeable o tenga hover, necesita pointerEvents: 'auto' */}
         <div style={{ pointerEvents: 'auto', padding: '10px', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '5px' }}>
         Ver de repente muchas moscas flotantes puede ser una señal de desprendimiento de retina. Si aparecen de golpe, especialmente con destellos de luz o pérdida de visión, es importante ir al oftalmólogo cuanto antes.
         </div>
@@ -94,7 +93,6 @@ export default function Floaters() {
         <FloatingDots />
         
         <PlayerControls />
-        {/* Ya no necesitamos los <Html> aquí para el botón y la leyenda */}
       </Canvas>
     </div>
   );

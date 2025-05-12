@@ -1,7 +1,6 @@
-import { PointerLockControls, Html } from "@react-three/drei"; // Import Html
+import { PointerLockControls, Html } from "@react-three/drei";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
-// import * as THREE from "three"; // Not strictly needed for this component anymore
 
 export function PlayerControls() {
   const { camera, gl } = useThree();
@@ -76,10 +75,10 @@ export function PlayerControls() {
     const handleLock = () => setIsLocked(true);
     const handleUnlock = () => {
         setIsLocked(false);
-        // console.log("Pointer Unlocked"); // For debugging if needed
+        // console.log("Pointer Unlocked");
     }
 
-    const controls = controlsRef.current; // Capture current value for cleanup
+    const controls = controlsRef.current; // Captura el valor actual
     if (controls) {
       controls.addEventListener("lock", handleLock);
       controls.addEventListener("unlock", handleUnlock);
@@ -93,7 +92,7 @@ export function PlayerControls() {
         controls.removeEventListener("unlock", handleUnlock);
       }
     };
-  }, [camera, gl, keysPressed]); // Removed controlsRef from deps to avoid re-binding listeners too often
+  }, [camera, gl, keysPressed]);
 
   useFrame((state, delta) => {
     if (controlsRef.current && controlsRef.current.isLocked) {
@@ -105,17 +104,15 @@ export function PlayerControls() {
     }
   });
 
-  // If not locked, show the instruction UI using Drei's Html
+  // Si no esta bloqueado enseña las instrucciones
   if (!isLocked) {
     return (
       <>
-        {/* PointerLockControls is still needed here to be initialized */}
         <PointerLockControls ref={controlsRef} args={[camera, gl.domElement]} />
         <Html
-          as="div" // a plain div wrapper
-          center // centers the HTML content relative to the 3D position (0,0,0) by default
+          as="div"
+          center
           style={{
-            // We'll use CSS to truly center it on screen as an overlay
             position: 'absolute',
             top: '50%',
             left: '50%',
@@ -128,10 +125,9 @@ export function PlayerControls() {
             textAlign: "center",
             fontSize: "1.1em",
             cursor: "pointer",
-            pointerEvents: 'auto', // Make sure this Html element is clickable
-            zIndex: 10000, // High z-index to be on top
+            pointerEvents: 'auto', // Clickear el elemento
+            zIndex: 10000, // Elemento en el top
           }}
-          // This onClick will try to lock the pointer
           onClick={() => {
             controlsRef.current?.lock();
           }}
@@ -147,6 +143,6 @@ export function PlayerControls() {
     );
   }
 
-  // If locked, just render the controls (they are already doing their job)
+  // Si esta bloqueado renderiza los controles
   return <PointerLockControls ref={controlsRef} args={[camera, gl.domElement]} />;
 }

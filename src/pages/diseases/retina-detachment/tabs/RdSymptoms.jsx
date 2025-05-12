@@ -2,8 +2,8 @@
 import { Canvas } from "@react-three/fiber";
 import { Col, Row } from "react-bootstrap";
 import GoldenGateHills from "../staging/GoldenGateHills";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
-import "./RdSymptoms.css"; // Asegúrate de tener un CSS para el cursor
+import { useNavigate } from "react-router-dom";
+import "./RdSymptoms.css";
 
 export default function RdSymptoms() {
   const navigate = useNavigate(); // Obtén la función de navegación
@@ -23,7 +23,6 @@ export default function RdSymptoms() {
             title="Haz clic para explorar la simulación de moscas flotantes" // Tooltip opcional
           >
             <Canvas>
-              {/* Puedes añadir props a GoldenGateHills si necesitas diferenciarlo */}
               {/* ej: <GoldenGateHills interactive={false} /> */}
               <GoldenGateHills />
             </Canvas>

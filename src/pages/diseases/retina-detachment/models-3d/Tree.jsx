@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
 // src/components/staging/Trees.jsx
 import React, { useMemo } from 'react';
 import * as THREE from 'three';
 
-// Un componente simple para un árbol individual (opcional, podrías hacerlo inline)
+// Un componente simple para un árbol individual
 function Tree({ position, trunkHeight, canopyRadius }) {
   return (
     <group position={position}>
@@ -53,7 +55,7 @@ export default function Trees({
       // que se mapea a (0.5, 0.5) en UV si no hay repetición de textura de desplazamiento.
       // Si displacementMap.repeat está en (1,1), entonces:
       const u = (x / terrainSizeX) + 0.5;
-      const v = (z / terrainSizeZ) + 0.5; // O 1.0 - ((z / terrainSizeZ) + 0.5) dependiendo de la orientación de tu heightmap
+      const v = (z / terrainSizeZ) + 0.5; // O 1.0 - ((z / terrainSizeZ) + 0.5) dependiendo de la orientación del heightmap
 
       // Asegurarse de que u,v estén en [0,1]
       const uClamped = Math.max(0, Math.min(1, u));

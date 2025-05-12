@@ -1,16 +1,18 @@
 import { useRef, useState, useEffect } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import "./Home.css";
+import { useNavigate } from "react-router";
 
 const Home = () => {
     const carouselRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(1);
     const [hasInteracted, setHasInteracted] = useState(false);
+    const navigate = useNavigate();
     const deseases = [
-        { name: "cataratas", verbose: "Cataratas" },
-        { name: "miopia", verbose: "Miopía" },
-        { name: "conjuntivitis", verbose: "Conjuntivitis" },
-        { name: "desprendimiento_retina", verbose: "Desprendimiento de retina" },
+        { name: "cataratas", verbose: "Cataratas", image: "/images/home/catarata-carousel.webp" },
+        { name: "miopia", verbose: "Miopía", image: "/images/home/miopia-carousel.webp" },
+        { name: "conjuntivitis", verbose: "Conjuntivitis", image: "/images/home/conjuntivitis-carousel.webp"  },
+        { name: "desprendimiento_retina", verbose: "Desprendimiento de retina", image: "/images/home/desprendimiento-de-retina-carousel.webp" },
     ];
 
     const loopedDiseases = [
@@ -18,6 +20,11 @@ const Home = () => {
         ...deseases,
         deseases[0],
     ];
+
+    const handleLearnMoreClick = () => {
+        navigate("/aprende-mas");
+      };
+    
 
     const navigateCarousel = (direction) => {
         setHasInteracted(true); // Mark as interacted when user navigates
@@ -116,7 +123,7 @@ const Home = () => {
                                 recursos y herramientas para ayudarte a mantener una buena salud ocular.
                             </p>
                             <div className="text-center mt-4">
-                                <Button variant="primary" size="lg" className="rounded-pill px-4">Aprende más</Button>
+                                <Button variant="primary" size="lg" className="rounded-pill px-4" onClick={handleLearnMoreClick}>Aprende más</Button>
                             </div>
                         </Col>
                     </Row>
@@ -149,7 +156,7 @@ const Home = () => {
                                         >
                                             <Card.Img
                                                 variant="top"
-                                                src="/images/home/card-eye-desease.webp"
+                                                src={disease.image}
                                                 alt={disease.verbose}
                                             />
                                             <Card.Body className="text-center d-flex flex-column">
@@ -206,8 +213,8 @@ const Home = () => {
                                     <Card.Text className="flex-grow-1">
                                         Un viaje a la profundidad de tus ojos mediante nuestra maravillosa experiencia 3D
                                     </Card.Text>
-                                    <Button variant="primary" className="mt-3 rounded-pill w-100">
-                                        Ver
+                                    <Button variant="secondary" className="mt-3 rounded-pill w-100" disabled>
+                                        Proximamente
                                     </Button>
                                 </Card.Body>
                             </Card>
@@ -228,8 +235,8 @@ const Home = () => {
                                     <Card.Text className="flex-grow-1">
                                         Prueba tus conocimientos aprendidos mediante nuestro quiz interactivo
                                     </Card.Text>
-                                    <Button variant="primary" className="mt-3 rounded-pill w-100">
-                                        Empezar
+                                    <Button variant="secondary" className="mt-3 rounded-pill w-100" disabled>
+                                        Proximamente
                                     </Button>
                                 </Card.Body>
                             </Card>

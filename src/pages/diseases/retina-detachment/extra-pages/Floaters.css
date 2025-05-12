@@ -18,27 +18,12 @@
   outline: none;
 }
 
-/* --- Add this for the floaters --- */
-/*
-The .floater-dot class is applied by Drei's Html component wrapper.
-The styles inside the div (size, background, blur) are applied inline in the JSX.
-This CSS rule ensures the wrapper itself doesn't interfere.
-*/
+/* Para los puntos flotantes */
 .floater-dot {
-/* Ensures the wrapper div doesn't add unexpected layout shifts or styles */
-line-height: 0; /* Prevents extra space if text were inside */
-pointer-events: none; /* Double ensure no interaction */
+line-height: 0;
+pointer-events: none; 
 user-select: none;
 }
-/* --- End floater styles --- */
-
-/* Ensure body styles set by useEffect don't conflict if !important is needed elsewhere */
-/* body {
-overflow: hidden 
-margin: 0 !important;
-padding: 0 !important;
-height: 100vh !important;
-} */
 
 
 /* Estilos para el botón DENTRO del componente Html */
