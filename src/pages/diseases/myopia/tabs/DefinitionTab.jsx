@@ -42,7 +42,7 @@ export default function DefinitionTab() {
                   anchorY={"middle"}
                   fontSize={0.08}
                 >
-                  Usa las flechas izquierda y derecha para rotar el modelo
+                  Usa las teclas A y D para rotar el modelo
                 </Text>
                 <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>

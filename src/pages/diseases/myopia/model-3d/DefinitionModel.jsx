@@ -12,15 +12,17 @@ export function DefinitionModel(props) {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === 'ArrowLeft') {
+      const key = event.key.toUpperCase() // Convertir la tecla a mayúsculas
+      if (key === 'A') {
         rotationSpeed = -0.02 // Rotar hacia la izquierda
-      } else if (event.key === 'ArrowRight') {
+      } else if (key === 'D') {
         rotationSpeed = 0.02 // Rotar hacia la derecha
       }
     }
 
     const handleKeyUp = (event) => {
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      const key = event.key.toUpperCase() // Convertir la tecla a mayúsculas
+      if (key === 'A' || key === 'D') {
         rotationSpeed = 0 // Detener la rotación al soltar la tecla
       }
     }
