@@ -49,7 +49,7 @@ function Desease({ desease, tabs, Definitions }) {
                 </Col>
             </Row>
             <Row className="justify-content-center g-0">
-                <Col xs={12} md={10} lg={8}>
+                <Col xs={12} md={10} lg={10}>
                     <Tabs
                         id={`${desease.name}-info-tabs`}
                         activeKey={key}
