@@ -83,7 +83,7 @@ const Home = () => {
                 <div className="hero-content text-white text-end p-4 p-md-5">
                     <h1 className="hero-title display-4 fw-bold">Horizon</h1>
                     <p className="lead">Cuidamos tu vista, ampliamos tu horizonte</p>
-                    <Button variant="outline-light" className="mt-3 px-4 rounded-pill">Descubrir</Button>
+                    {/* <Button variant="outline-light" className="mt-3 px-4 rounded-pill">Descubrir</Button> */}
                 </div>
             </section>
 
@@ -95,7 +95,7 @@ const Home = () => {
                     </h2>
                     <Row className="g-4 align-items-center">
                         <Col md={6}>
-                            <div className="pe-md-4">
+                            <div className="pe-md-4 ps-md-4">
                                 <p className="mb-4">
                                     En Horizon, nos dedicamos a brindarte información precisa y actualizada sobre las enfermedades
                                     oculares. Nuestro objetivo es ayudarte a comprender mejor tu salud ocular y empoderarte para

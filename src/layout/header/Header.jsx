@@ -61,7 +61,7 @@ const Header = () => {
                             </NavDropdown>
                             <Nav.Item>
                                 <Nav.Link as={NavLink} to="/about-us" onClick={() => setMenuOpen(false)}>
-                                    About Us
+                                    Sobre nosotros
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
