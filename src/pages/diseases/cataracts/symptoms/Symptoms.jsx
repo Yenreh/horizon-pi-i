@@ -18,12 +18,7 @@ export default function Symptoms() {
                 <Lights />
                 <Staging />
                 <Text textContent={"¡Haz clic y presiona g!"} />
-                <Girl position={[0, -0.9, 0]}/>
-                
-                <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.9, 0]} receiveShadow>
-                  <planeGeometry args={[50, 50]} />
-                  <shadowMaterial transparent opacity={0.3} />
-                </mesh>
+                <Girl position={[0, -1, 0]}/>
 
               </Suspense>
               <OrbitControls enableZoom={false}/>
