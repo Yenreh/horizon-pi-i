@@ -80,7 +80,7 @@ const Home = () => {
             {/* Hero Section */}
             <section className="hero-section d-flex align-items-center justify-content-end position-relative">
                 <div className="hero-overlay"></div>
-                <div className="hero-content text-white text-end p-4 p-md-5">
+                <div className="hero-content text-white text-end">
                     <h1 className="hero-title display-4 fw-bold">Horizon</h1>
                     <p className="lead">Cuidamos tu vista, ampliamos tu horizonte</p>
                     {/* <Button variant="outline-light" className="mt-3 px-4 rounded-pill">Descubrir</Button> */}
@@ -118,12 +118,14 @@ const Home = () => {
                             </div>
                         </Col>
                         <Col xs={12} className="mt-4">
-                            <p className="text-center">
-                                ¿Quieres saber más sobre cómo cuidar de tus ojos? ¡No te preocupes! En Horizon, tenemos
-                                recursos y herramientas para ayudarte a mantener una buena salud ocular.
-                            </p>
-                            <div className="text-center mt-4">
-                                <Button variant="primary" size="lg" className="rounded-pill px-4" onClick={handleLearnMoreClick}>Aprende más</Button>
+                            <div className="text-center mx-auto home-cta-text">
+                                <p className="fw-bold">
+                                    ¿Quieres saber más sobre cómo cuidar de tus ojos? ¡No te preocupes! En Horizon, tenemos
+                                    recursos y herramientas para ayudarte a mantener una buena salud ocular.
+                                </p>
+                                <div className="mt-4">
+                                    <Button variant="primary" size="lg" className="rounded-pill px-4" onClick={handleLearnMoreClick}>Aprende más</Button>
+                                </div>
                             </div>
                         </Col>
                     </Row>
