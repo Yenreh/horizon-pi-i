@@ -24,11 +24,16 @@ const Header = () => {
         let lastScrollY = window.scrollY;
 
         const handleScroll = () => {
-            if (window.scrollY > lastScrollY) {
-                setIsHidden(true);
-            } else {
-                setIsHidden(false);
+            const isDropdownOpen = document.querySelector('.dropdown-menu.show');
+
+            if (!isDropdownOpen) {
+                if (window.scrollY > lastScrollY) {
+                    setIsHidden(true);
+                } else {
+                    setIsHidden(false);
+                }
             }
+
             lastScrollY = window.scrollY;
         };
 
