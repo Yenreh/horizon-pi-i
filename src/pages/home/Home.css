@@ -20,6 +20,7 @@
 }
 
 .hero-content {
+    padding-right: 10%;
     position: relative;
     z-index: 2;
 }
