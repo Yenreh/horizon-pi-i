@@ -131,7 +131,7 @@
 }
 
 .bootstrap-carousel-card {
-    width: 280px;
+    width: 45%;
     height: 400px;
     border-radius: 15px;
     overflow: hidden;
@@ -202,7 +202,7 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .bootstrap-carousel-card {
-        width: 240px;
+        width: 60%;
         height: 390px;
     }
 
@@ -225,7 +225,7 @@
 
 @media (max-width: 576px) {
     .bootstrap-carousel-card {
-        width: 200px;
+        width: 75%;
         height: 380px;
     }
 
