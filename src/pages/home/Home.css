@@ -64,6 +64,9 @@
 .intro-image-container {
     overflow: hidden;
 }
+.home-cta-text{
+    max-width: 45%;
+}
 
 /* Carousel Section */
 .carousel-wrapper {
