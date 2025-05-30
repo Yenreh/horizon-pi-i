@@ -5,7 +5,6 @@ import * as THREE from 'three'
 import  SceneCloudy  from '../staging/Cloudy'
 import  NotCloudy  from '../staging/NotCloudy'
 import Staging from '../staging/Staging'
-import { useSpring } from '@react-spring/three'
 
 export function Glasses(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/glasses.glb')
@@ -13,7 +12,7 @@ export function Glasses(props) {
   const { camera } = useThree()
   const initialCameraPos = useRef(camera.position.clone())
   const targetCameraPos = useRef(null)
-  const [hovered, setHovered] = useState(false)
+  const groupRef = useRef()
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -41,40 +40,53 @@ export function Glasses(props) {
     }
   })
 
+  useFrame(({ clock }) => {
+    groupRef.current.rotation.y = Math.sin(clock.getElapsedTime()) * 0.2
+  })
+
   return (
     <group {...props} dispose={null} scale={[4, 4, 4]}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Temples.geometry}
-        material={materials.Bridge}
-      />
-      <mesh
-        castShadow
-        geometry={nodes.TempleTip.geometry}
-        material={materials.Frame}
-      />
 
-      <mesh castShadow receiveShadow geometry={nodes.Lens.geometry}>
-          <meshPhysicalMaterial
-            transparent={true}
-            opacity={0.3}
-            roughness={0.2}
-            metalness={0}
-            thickness={0.5}
-            ior={1.2}
-            color="#cce6ff" // un azul nublado
-          />
-      </mesh>
+      <group ref={groupRef}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Temples.geometry}
+          material={materials.Bridge}
+        />
+        <mesh
+          castShadow
+          geometry={nodes.TempleTip.geometry}
+          material={materials.Frame}
+        />
 
+        <mesh castShadow receiveShadow geometry={nodes.Lens.geometry}  
+          onClick={() => {
+            setNublado('normal');
+            targetCameraPos.current = initialCameraPos.current.clone();
+          }}
+        >
+            <meshPhysicalMaterial
+              transparent={true}
+              opacity={0.3}
+              roughness={0.2}
+              metalness={0}
+              thickness={0.5}
+              ior={1.2}
+              color="#cce6ff"
+            />
+        </mesh>
+
+        <mesh castShadow receiveShadow geometry={nodes.Frame.geometry} material={materials.Frame} />
+        <mesh castShadow receiveShadow geometry={nodes.Bridge.geometry} material={materials.Bridge} />
+      </group>
+      
       <group position={nodes.Lens.position}>
         {nublado === 'cloudy' && <SceneCloudy />}
         {nublado === 'notCloudy' && <NotCloudy />}
         {nublado === 'normal' && <Staging />}
       </group>
 
-      <mesh castShadow receiveShadow geometry={nodes.Frame.geometry} material={materials.Frame} />
-      <mesh castShadow receiveShadow geometry={nodes.Bridge.geometry} material={materials.Bridge} />
     </group>
   )
 }

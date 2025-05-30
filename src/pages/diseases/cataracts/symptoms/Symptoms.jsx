@@ -1,18 +1,23 @@
 import React, { Suspense } from "react";
 import "../Cataracts.css";
+import "../../Desease.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Girl } from "./model-3d/Girl";
 import Lights from "./Lights/Lights";
 import Staging from "./staging/Staging";
 import Text from "./texts/Text"
+import { LuRotate3D } from "react-icons/lu";
 
 
 export default function Symptoms() {
   return (
       <div className="content">
         <div className="diagram-section">
-          <div className="canvas-wrapper">
+          <div className="desease-canvas-wrapper position-relative">
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
+              <LuRotate3D title="Modelo 3D" />
+            </div>
             <Canvas camera={{ position: [0, 0, 1.5]}} shadows>
               <Suspense fallback={null}>
                 <Lights />

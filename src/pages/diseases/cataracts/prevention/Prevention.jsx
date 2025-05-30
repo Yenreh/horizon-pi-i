@@ -1,15 +1,20 @@
 import React, { Suspense } from "react";
 import "../Cataracts.css";
+import "../../Desease.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Vegetable } from "./model-3d/Vegetable";
+import { LuRotate3D } from "react-icons/lu";
 
 
 export default function Prevention() {
   return (
       <div className="content">
         <div className="diagram-section">
-          <div className="canvas-wrapper">
+          <div className="desease-canvas-wrapper position-relative">
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
+              <LuRotate3D title="Modelo 3D" />
+            </div>
             <Canvas camera={{ position: [0, 1, 2.5]}} shadows>
               <Suspense fallback={null}>
                 <ambientLight intensity={2} />

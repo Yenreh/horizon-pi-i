@@ -1,15 +1,20 @@
 import React, { Suspense } from "react";
 import "./definition.css";
+import "../../Desease.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Eye } from "./model-3d/Eye";
 import Lights from "./Lights/Lights";
+import { LuRotate3D } from "react-icons/lu";
 
 export default function definition() {
   return (
       <div className="content">
         <div className="diagram-section">
-          <div className="canvas-wrapper">
+          <div className="desease-canvas-wrapper position-relative">
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
+              <LuRotate3D title="Modelo 3D" />
+            </div>
             <Canvas camera={{ position: [0, 1, 3]}} shadows>
               <Suspense fallback={null}>
                 <Lights />
