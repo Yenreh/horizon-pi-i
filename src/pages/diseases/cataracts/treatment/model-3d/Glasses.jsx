@@ -1,8 +1,46 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useThree, useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
+import  SceneCloudy  from '../staging/Cloudy'
+import  NotCloudy  from '../staging/NotCloudy'
+import Staging from '../staging/Staging'
+import { useSpring } from '@react-spring/three'
 
 export function Glasses(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/glasses.glb')
+  const [nublado, setNublado] = useState('normal')
+  const { camera } = useThree()
+  const initialCameraPos = useRef(camera.position.clone())
+  const targetCameraPos = useRef(null)
+  const [hovered, setHovered] = useState(false)
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 's') {
+        setNublado('cloudy')
+        targetCameraPos.current = new THREE.Vector3(0, 0, -3.5) 
+      }
+      if (e.key === 't') {
+        setNublado('notCloudy')
+        targetCameraPos.current = new THREE.Vector3(0, -0.5, -1.5) 
+      }
+      if (e.key === 'n') {
+        setNublado('normal')
+        targetCameraPos.current = initialCameraPos.current.clone()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  useFrame(() => {
+    if (targetCameraPos.current) {
+      camera.position.lerp(targetCameraPos.current, 0.05)
+      camera.lookAt(0, 0, 0)
+    }
+  })
+
   return (
     <group {...props} dispose={null} scale={[4, 4, 4]}>
       <mesh
@@ -13,11 +51,28 @@ export function Glasses(props) {
       />
       <mesh
         castShadow
-        receiveShadow
         geometry={nodes.TempleTip.geometry}
         material={materials.Frame}
       />
-      <mesh castShadow receiveShadow geometry={nodes.Lens.geometry} material={materials.Lens} />
+
+      <mesh castShadow receiveShadow geometry={nodes.Lens.geometry}>
+          <meshPhysicalMaterial
+            transparent={true}
+            opacity={0.3}
+            roughness={0.2}
+            metalness={0}
+            thickness={0.5}
+            ior={1.2}
+            color="#cce6ff" // un azul nublado
+          />
+      </mesh>
+
+      <group position={nodes.Lens.position}>
+        {nublado === 'cloudy' && <SceneCloudy />}
+        {nublado === 'notCloudy' && <NotCloudy />}
+        {nublado === 'normal' && <Staging />}
+      </group>
+
       <mesh castShadow receiveShadow geometry={nodes.Frame.geometry} material={materials.Frame} />
       <mesh castShadow receiveShadow geometry={nodes.Bridge.geometry} material={materials.Bridge} />
     </group>

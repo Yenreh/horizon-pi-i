@@ -3,7 +3,7 @@ import "../Cataracts.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Glasses } from "./model-3d/Glasses";
-
+import Lights from "./Lights/Lights";
 
 export default function Treatment() {
   return (
@@ -12,8 +12,8 @@ export default function Treatment() {
           <div className="canvas-wrapper">
             <Canvas camera={{ position: [0, 0, 3]}} shadows>
               <Suspense fallback={null}>
-                <ambientLight intensity={2} />
-                <Glasses position={[0, 0, 0]}/>
+                <Lights />
+                <Glasses position={[0, -1, 0]}/>
 
               </Suspense>
               <OrbitControls enableZoom={false}/>
