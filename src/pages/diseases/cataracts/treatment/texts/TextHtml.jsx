@@ -1,9 +1,12 @@
-import { Center, Html, Text, Text3D } from "@react-three/drei";
+import React, { useState } from 'react';
+import { Html } from '@react-three/drei';
+import './Title.css'
 
-const TextHtml = ({scaleX, posX, posY, posZ}) => {
+const TextHtml = ({ scaleX, posX, posY, posZ }) => {
+  const [showInfo, setShowInfo] = useState(false);
+
   return (
     <Html
-      //occlude
       center
       position={[posX, posY, posZ]}
       transform
@@ -11,23 +14,26 @@ const TextHtml = ({scaleX, posX, posY, posZ}) => {
       wrapperClass="title"
       scale={[scaleX, 1, 1]}
     >
-    <button
-      style={{
-        padding: '4px 8px',
-        fontSize: '10px',
-        background: 'transparent',
-        border: '1px solid #ccc',
-        borderRadius: '8px',
-        cursor: 'pointer',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}
-      onClick={() => alert('¡Info importante!')}
-    >
-      <i className="bi bi-info-circle-fill"></i>
-      Info
-    </button>
+      <div style={{ position: 'relative', display: 'inline-block' }}>
+        <button
+          className="info-button"
+          onMouseEnter={() => setShowInfo(true)}
+          onMouseLeave={() => setShowInfo(false)}
+        >
+          <i className="bi bi-info-circle-fill"></i>
+          Info
+        </button>
+
+        {showInfo && (
+          <div className='info-box'
+          >
+            👁️ Presiona: <br />
+            s - Vista sin tratamiento  <br />
+            t - Efecto del tratamiento <br />
+            n - Volver
+          </div>
+        )}
+      </div>
     </Html>
   );
 };

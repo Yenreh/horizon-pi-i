@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Eye } from "./model-3d/Eye";
 import Lights from "./Lights/Lights";
+import Title from "./texts/Title";
 import { LuRotate3D } from "react-icons/lu";
 
 export default function definition() {
@@ -17,6 +18,7 @@ export default function definition() {
             </div>
             <Canvas camera={{ position: [0, 1, 3]}} shadows>
               <Suspense fallback={null}>
+                <Title />
                 <Lights />
                 <Eye position={[0, 0, 0]}/>
 
