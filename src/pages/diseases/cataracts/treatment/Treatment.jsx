@@ -6,6 +6,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Glasses } from "./model-3d/Glasses";
 import Lights from "./Lights/Lights";
 import { LuRotate3D } from "react-icons/lu";
+import TextHtml from "./texts/TextHtml";
 
 export default function Treatment() {
   return (

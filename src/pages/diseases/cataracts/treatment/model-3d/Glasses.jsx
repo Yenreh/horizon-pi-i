@@ -16,15 +16,15 @@ export function Glasses(props) {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 's') {
+      if (e.key === 's' || e.key === 'S') {
         setNublado('cloudy')
         targetCameraPos.current = new THREE.Vector3(0, 0, -3.5) 
       }
-      if (e.key === 't') {
+      if (e.key === 't' || e.key === 'T') {
         setNublado('notCloudy')
         targetCameraPos.current = new THREE.Vector3(0, -0.5, -1.5) 
       }
-      if (e.key === 'n') {
+      if (e.key === 'n' || e.key === 'N') {
         setNublado('normal')
         targetCameraPos.current = initialCameraPos.current.clone()
       }
