@@ -8,6 +8,7 @@ import { LuRotate3D } from "react-icons/lu";
 import Staging from "./staging/Staging";
 import Lights from "./Lights/Lights";
 import TextVegetable from "./texts/TextVegetable";
+import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
 
 export default function Prevention() {
   return (
@@ -18,6 +19,14 @@ export default function Prevention() {
               <LuRotate3D title="Modelo 3D" />
             </div>
             <Canvas camera={{ position: [-0.09, 0.4, 2.5]}} shadows>
+            <KeyboardControls
+              map={[
+                { name: 'vitaminC', keys: ['c', 'C'] },
+                { name: 'vitaminE', keys: ['e', 'E'] },
+                { name: 'lutein', keys: ['l', 'L'] },
+                { name: 'zeaxanthin', keys: ['z', 'Z'] },
+              ]}
+            >
               <Staging />
               <Suspense fallback={null}>
                 <Lights />
@@ -34,6 +43,7 @@ export default function Prevention() {
                 minDistance={2}
                 maxDistance={10}
               />
+            </KeyboardControls>
             </Canvas>
           </div>
         </div>        

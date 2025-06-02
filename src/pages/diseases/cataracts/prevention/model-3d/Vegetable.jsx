@@ -1,14 +1,23 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
 
 export function Vegetable(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/vegetable-shop.glb')
 
   const redPennantRef = useRef()
+  const [subscribeKeys, getKeys] = useKeyboardControls() //Events
 
   useFrame((state, delta) => {
-    redPennantRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 4) * 0.06
+    const { vitaminC, vitaminE, lutein, zeaxanthin} = getKeys()
+    
+
+    if (vitaminC) {
+      redPennantRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 4) * 0.06
+    }
+
+
   })
 
   return (
