@@ -6,12 +6,14 @@ import * as THREE from 'three'
 import { useThree } from '@react-three/fiber'
 import { Cloud } from '@react-three/drei'
 import Text from "../texts/Text"
+import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
 
 export function Girl(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/girl.glb')
 
   const [showGlasses, setShowGlasses] = useState(false)
   const [glassesAnimationTime, setGlassesAnimationTime] = useState(0)
+  const [subscribeKeys, getKeys] = useKeyboardControls() //Events
 
   const spring = useSpring({
     scale: showGlasses ? 1 : 0.001,
@@ -28,29 +30,43 @@ export function Girl(props) {
   const initialCameraPos = useRef(camera.position.clone())
   const [animationGirl, setAnimationGirl] = useState(true)
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      // if (e.key === 'g' && showGlasses) {
-      //   setGlassesAnimationTime(2.5)
-      // }
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     // if (e.key === 'g' && showGlasses) {
+  //     //   setGlassesAnimationTime(2.5)
+  //     // }
 
-      if (e.key === 's' || e.key === 'S') {
-        targetCameraPos.current = new THREE.Vector3(0, 0.2, -0.3)
-        setShowClouds(true)
-        setAnimationGirl(false)
-      }
+  //     if (e.key === 's' || e.key === 'S') {
+  //       targetCameraPos.current = new THREE.Vector3(0, 0.2, -0.3)
+  //       setShowClouds(true)
+  //       setAnimationGirl(false)
+  //     }
 
-      if (e.key === 'n' || e.key === 'N') {
+  //     if (e.key === 'n' || e.key === 'N') {
+  //       targetCameraPos.current = initialCameraPos.current.clone()
+  //       setShowClouds(false)
+  //       setAnimationGirl(true)
+  //     }
+  //   }
+  //   window.addEventListener('keydown', handleKeyDown)
+  //   return () => window.removeEventListener('keydown', handleKeyDown)
+  // }, [showGlasses])
+
+  useFrame((state, delta) => {
+    const { Return, symptom } = getKeys()
+
+    if (Return) {
         targetCameraPos.current = initialCameraPos.current.clone()
         setShowClouds(false)
         setAnimationGirl(true)
-      }
     }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [showGlasses])
 
-  useFrame((state, delta) => {
+    if (symptom) {
+        targetCameraPos.current = new THREE.Vector3(0, 0.2, -0.3)
+        setShowClouds(true)
+        setAnimationGirl(false)
+    }
+
     if (groupRef.current && animationGirl) {
         const t = state.clock.elapsedTime
         groupRef.current.rotation.y = Math.sin(t * 1.5) * 0.2
@@ -128,4 +144,3 @@ export function Girl(props) {
 }
 
 useGLTF.preload('/models-3d/cataracts/girl.glb')
-

@@ -5,6 +5,7 @@ import * as THREE from 'three'
 import  SceneCloudy  from '../staging/Cloudy'
 import  NotCloudy  from '../staging/NotCloudy'
 import Staging from '../staging/Staging'
+import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
 
 export function Glasses(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/glasses.glb')
@@ -13,25 +14,46 @@ export function Glasses(props) {
   const initialCameraPos = useRef(camera.position.clone())
   const targetCameraPos = useRef(null)
   const groupRef = useRef()
+  const [subscribeKeys, getKeys] = useKeyboardControls() //Events
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 's' || e.key === 'S') {
-        setNublado('cloudy')
-        targetCameraPos.current = new THREE.Vector3(0, 0, -3.5) 
-      }
-      if (e.key === 't' || e.key === 'T') {
-        setNublado('notCloudy')
-        targetCameraPos.current = new THREE.Vector3(0, -0.5, -1.5) 
-      }
-      if (e.key === 'n' || e.key === 'N') {
-        setNublado('normal')
-        targetCameraPos.current = initialCameraPos.current.clone()
-      }
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === 's' || e.key === 'S') {
+  //       setNublado('cloudy')
+  //       targetCameraPos.current = new THREE.Vector3(0, 0, -3.5) 
+  //     }
+  //     if (e.key === 't' || e.key === 'T') {
+  //       setNublado('notCloudy')
+  //       targetCameraPos.current = new THREE.Vector3(0, -0.5, -1.5) 
+  //     }
+  //     if (e.key === 'n' || e.key === 'N') {
+  //       setNublado('normal')
+  //       targetCameraPos.current = initialCameraPos.current.clone()
+  //     }
+  //   }
+  //   window.addEventListener('keydown', handleKeyDown)
+  //   return () => window.removeEventListener('keydown', handleKeyDown)
+  // }, [])
+
+  useFrame(() => {
+    const { Return, symptom, treatments } = getKeys()
+
+    if (Return) {
+      setNublado('normal')
+      targetCameraPos.current = initialCameraPos.current.clone()
     }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
+
+    if (symptom) {
+      setNublado('cloudy')
+      targetCameraPos.current = new THREE.Vector3(0, 0, -3.5) 
+    }
+
+    if (treatments) {
+      setNublado('notCloudy')
+      targetCameraPos.current = new THREE.Vector3(0, -0.5, -1.5) 
+    }
+    
+  })
 
   useFrame(() => {
     if (targetCameraPos.current) {

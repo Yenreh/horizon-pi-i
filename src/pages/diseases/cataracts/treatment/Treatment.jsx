@@ -6,7 +6,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Glasses } from "./model-3d/Glasses";
 import Lights from "./Lights/Lights";
 import { LuRotate3D } from "react-icons/lu";
-import TextHtml from "./texts/TextHtml";
+import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
 
 export default function Treatment() {
   return (
@@ -17,12 +17,21 @@ export default function Treatment() {
               <LuRotate3D title="Modelo 3D" />
             </div>
             <Canvas camera={{ position: [0, 0, 3]}} shadows>
-              <Suspense fallback={null}>
+            <KeyboardControls
+              map={[
+                { name: 'Return', keys: ['n', 'N'] },
+                { name: 'symptom', keys: ['s', 'S'] },
+                { name: 'treatments', keys: ['t', 'T'] },
+              ]}
+            >
+               <Suspense fallback={null}>
                 <Lights />
                 <Glasses position={[0, -1, 0]}/>
 
               </Suspense>
-              <OrbitControls enableZoom={false}/>
+              <OrbitControls enableZoom={false}/>             
+            </KeyboardControls>
+
             </Canvas>
           </div>
         </div>        

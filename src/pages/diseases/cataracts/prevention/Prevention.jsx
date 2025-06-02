@@ -6,7 +6,8 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Vegetable } from "./model-3d/Vegetable";
 import { LuRotate3D } from "react-icons/lu";
 import Staging from "./staging/Staging";
-
+import Lights from "./Lights/Lights";
+import TextVegetable from "./texts/TextVegetable";
 
 export default function Prevention() {
   return (
@@ -16,14 +17,23 @@ export default function Prevention() {
             <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
               <LuRotate3D title="Modelo 3D" />
             </div>
-            <Canvas camera={{ position: [0, 1, 2.5]}} shadows>
+            <Canvas camera={{ position: [-0.09, 0.4, 2.5]}} shadows>
               <Staging />
               <Suspense fallback={null}>
-                <ambientLight intensity={2} />
-                <Vegetable position={[0, -0.4, 0]}/>
+                <Lights />
+                <TextVegetable />
+                <Vegetable position={[0, -0.5, 0.5]}/>
 
               </Suspense>
-              <OrbitControls enableZoom={false}/>
+              <OrbitControls
+                enableZoom={false}
+                minAzimuthAngle={-Math.PI / 4}
+                maxAzimuthAngle={Math.PI / 4}
+                minPolarAngle={Math.PI / 3}
+                maxPolarAngle={Math.PI / 2}
+                minDistance={2}
+                maxDistance={10}
+              />
             </Canvas>
           </div>
         </div>        

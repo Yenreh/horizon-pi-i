@@ -8,6 +8,7 @@ import Lights from "./Lights/Lights";
 import Staging from "./staging/Staging";
 import Text from "./texts/Text"
 import { LuRotate3D } from "react-icons/lu";
+import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
 
 export default function Symptoms() {
   return (
@@ -18,14 +19,22 @@ export default function Symptoms() {
               <LuRotate3D title="Modelo 3D" />
             </div>
             <Canvas camera={{ position: [0, 0, 1]}} shadows>
-              <Suspense fallback={null}>
-                <Lights />
-                <Staging />
-                <Text textContent={"¡Haz clic y luego presiona s!"} scaleX={1} posX={-0.5} posY={2.5} posZ={-3} />
-                <Girl position={[0, -1, -0.5]}/>
+            <KeyboardControls
+              map={[
+                { name: 'Return', keys: ['n', 'N'] },
+                { name: 'symptom', keys: ['s', 'S'] },
+              ]}
+            >
+                <Suspense fallback={null}>
+                          <Lights />
+                          <Staging />
+                          <Text textContent={"¡Haz clic y luego presiona s!"} scaleX={1} posX={-0.5} posY={2.5} posZ={-3} />
+                          <Girl position={[0, -1, -0.5]}/>
 
-              </Suspense>
-              <OrbitControls enableZoom={false}/>
+                </Suspense>
+                <OrbitControls enableZoom={false}/>
+            </KeyboardControls>
+            
             </Canvas>
           </div>
         </div>        

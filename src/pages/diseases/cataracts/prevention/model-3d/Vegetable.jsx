@@ -1,8 +1,16 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 
 export function Vegetable(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/vegetable-shop.glb')
+
+  const redPennantRef = useRef()
+
+  useFrame((state, delta) => {
+    redPennantRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 4) * 0.06
+  })
+
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -36,7 +44,7 @@ export function Vegetable(props) {
         geometry={nodes.BlueTentBack.geometry}
         material={materials.BlueTentBack}
       />
-      <mesh castShadow receiveShadow geometry={nodes.Apple.geometry} material={materials.Apple} />
+      <mesh         ref={redPennantRef} castShadow receiveShadow geometry={nodes.Apple.geometry} material={materials.Apple} />
       <mesh castShadow receiveShadow geometry={nodes.Pear.geometry} material={materials.Pear} />
       <mesh
         castShadow
