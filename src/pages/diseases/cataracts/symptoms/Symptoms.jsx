@@ -15,14 +15,13 @@ export default function Symptoms() {
         <div className="diagram-section">
           <div className="desease-canvas-wrapper position-relative">
             <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
-              <p>Presiona n para volver</p>
               <LuRotate3D title="Modelo 3D" />
             </div>
             <Canvas camera={{ position: [0, 0, 1]}} shadows>
               <Suspense fallback={null}>
                 <Lights />
                 <Staging />
-                <Text textContent={"¡Haz clic y luego presiona s!"} scaleX={1} posY={2.5} posZ={-3} />
+                <Text textContent={"¡Haz clic y luego presiona s!"} scaleX={1} posX={-0.5} posY={2.5} posZ={-3} />
                 <Girl position={[0, -1, -0.5]}/>
 
               </Suspense>

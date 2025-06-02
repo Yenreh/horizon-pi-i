@@ -1,11 +1,11 @@
 import { Html } from "@react-three/drei";
 import "./Text.css";
 
-const Text = ({ textContent, scaleX, posY, posZ }) => {
+const Text = ({ textContent, scaleX, posX, posY, posZ }) => {
   return (
     <Html
       center
-      position={[-0.5, posY, posZ]}
+      position={[posX, posY, posZ]}
       transform
       distanceFactor={5}
       wrapperClass="title"

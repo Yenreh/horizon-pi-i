@@ -26,6 +26,7 @@ export function Girl(props) {
   const targetCameraPos = useRef(null)
   const { camera } = useThree()
   const initialCameraPos = useRef(camera.position.clone())
+  const [animationGirl, setAnimationGirl] = useState(true)
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -36,11 +37,13 @@ export function Girl(props) {
       if (e.key === 's' || e.key === 'S') {
         targetCameraPos.current = new THREE.Vector3(0, 0.2, -0.3)
         setShowClouds(true)
+        setAnimationGirl(false)
       }
 
       if (e.key === 'n' || e.key === 'N') {
         targetCameraPos.current = initialCameraPos.current.clone()
         setShowClouds(false)
+        setAnimationGirl(true)
       }
     }
     window.addEventListener('keydown', handleKeyDown)
@@ -48,7 +51,7 @@ export function Girl(props) {
   }, [showGlasses])
 
   useFrame((state, delta) => {
-    if (groupRef.current) {
+    if (groupRef.current && animationGirl) {
         const t = state.clock.elapsedTime
         groupRef.current.rotation.y = Math.sin(t * 1.5) * 0.2
     }
@@ -113,6 +116,7 @@ export function Girl(props) {
           segments={50}
           bounds={[5, 5, 2]}
         />
+        <Text textContent={"Presiona n para volver"} scaleX={-1} posX={0} posY={1} posZ={5}/>
         </>
         
 

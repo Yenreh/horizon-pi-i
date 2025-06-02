@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Vegetable } from "./model-3d/Vegetable";
 import { LuRotate3D } from "react-icons/lu";
+import Staging from "./staging/Staging";
 
 
 export default function Prevention() {
@@ -16,9 +17,10 @@ export default function Prevention() {
               <LuRotate3D title="Modelo 3D" />
             </div>
             <Canvas camera={{ position: [0, 1, 2.5]}} shadows>
+              <Staging />
               <Suspense fallback={null}>
                 <ambientLight intensity={2} />
-                <Vegetable position={[0, 0, 0]}/>
+                <Vegetable position={[0, -0.4, 0]}/>
 
               </Suspense>
               <OrbitControls enableZoom={false}/>
