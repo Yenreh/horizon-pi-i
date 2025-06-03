@@ -1,27 +1,45 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
+import { PositionalAudio } from '@react-three/drei'
 
 export function Vegetable(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/vegetable-shop.glb')
 
   const redPennantRef = useRef()
+  const orangesRef = useRef()
+  const [vegetableAnimationTime, setVegetableAnimationTime] = useState(2.5)
   const [subscribeKeys, getKeys] = useKeyboardControls() //Events
+  const [clicked, setClicked] = useState(false)
+  const soundRef = useRef()
 
   useFrame((state, delta) => {
-    const { vitaminC, vitaminE, lutein, zeaxanthin} = getKeys()
-    
-
-    if (vitaminC) {
-      redPennantRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 4) * 0.06
+    const { vitaminC, hear} = getKeys()
+    if (clicked && orangesRef.current) {
+      orangesRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 4) * 0.06
     }
+    redPennantRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 3) * 0.02
 
-
+    if (hear) {
+      soundRef.current.play()
+    }
   })
 
   return (
-    <group {...props} dispose={null}>
+    <group     
+        onPointerOver={() => setClicked(true)}
+        onPointerOut={() => setClicked(false)}
+        {...props} dispose={null}>
+        
+        <PositionalAudio
+        ref={soundRef}
+        url="/sounds/cataracts.mp3"
+        distance={5}         
+        loop={false}
+        autoplay={false}
+      />
+
       <mesh
         castShadow
         receiveShadow
@@ -53,7 +71,7 @@ export function Vegetable(props) {
         geometry={nodes.BlueTentBack.geometry}
         material={materials.BlueTentBack}
       />
-      <mesh         ref={redPennantRef} castShadow receiveShadow geometry={nodes.Apple.geometry} material={materials.Apple} />
+      <mesh          castShadow receiveShadow geometry={nodes.Apple.geometry} material={materials.Apple} />
       <mesh castShadow receiveShadow geometry={nodes.Pear.geometry} material={materials.Pear} />
       <mesh
         castShadow
@@ -149,60 +167,66 @@ export function Vegetable(props) {
         material={materials.YellowChilies}
       />
       <mesh
+        ref={orangesRef} 
         castShadow
         receiveShadow
         geometry={nodes.NameShop.geometry}
         material={materials.NameShop}
       />
-      <mesh castShadow receiveShadow geometry={nodes.Cord.geometry} material={materials.Cord} />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.YellowPennant.geometry}
-        material={materials.YellowPennant}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.RedPennant.geometry}
-        material={materials.RedPennant}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.GreenPennant.geometry}
-        material={materials.GreenPennant}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.BluePennant.geometry}
-        material={materials.BluePennant}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.PurplePennant.geometry}
-        material={materials.PurplePennant}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.OrangePennant.geometry}
-        material={materials.OrangePennant}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.LightGreenPennant.geometry}
-        material={materials.LightGreenPennant}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.DarkGreenPennant.geometry}
-        material={materials.DarkGreenPennant}
-      />
+      <mesh  castShadow receiveShadow geometry={nodes.Cord.geometry} material={materials.Cord} />
+      
+      <group ref={redPennantRef}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.YellowPennant.geometry}
+          material={materials.YellowPennant}
+        />
+        <mesh
+          
+          castShadow
+          receiveShadow
+          geometry={nodes.RedPennant.geometry}
+          material={materials.RedPennant}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.GreenPennant.geometry}
+          material={materials.GreenPennant}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.BluePennant.geometry}
+          material={materials.BluePennant}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.PurplePennant.geometry}
+          material={materials.PurplePennant}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.OrangePennant.geometry}
+          material={materials.OrangePennant}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.LightGreenPennant.geometry}
+          material={materials.LightGreenPennant}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.DarkGreenPennant.geometry}
+          material={materials.DarkGreenPennant}
+        />
+      </group>
+
       <mesh
         castShadow
         receiveShadow

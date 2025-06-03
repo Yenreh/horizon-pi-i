@@ -52,7 +52,7 @@ export function Glasses(props) {
       setNublado('notCloudy')
       targetCameraPos.current = new THREE.Vector3(0, -0.5, -1.5) 
     }
-    
+
   })
 
   useFrame(() => {

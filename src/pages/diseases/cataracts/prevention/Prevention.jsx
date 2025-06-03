@@ -9,6 +9,7 @@ import Staging from "./staging/Staging";
 import Lights from "./Lights/Lights";
 import TextVegetable from "./texts/TextVegetable";
 import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
+import TextHtml from "./texts/TextHtml";
 
 export default function Prevention() {
   return (
@@ -22,11 +23,11 @@ export default function Prevention() {
             <KeyboardControls
               map={[
                 { name: 'vitaminC', keys: ['c', 'C'] },
-                { name: 'vitaminE', keys: ['e', 'E'] },
-                { name: 'lutein', keys: ['l', 'L'] },
-                { name: 'zeaxanthin', keys: ['z', 'Z'] },
+                { name: 'hear', keys: ['e', 'E'] },
+                
               ]}
             >
+              <TextHtml />
               <Staging />
               <Suspense fallback={null}>
                 <Lights />
