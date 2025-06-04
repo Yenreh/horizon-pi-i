@@ -4,6 +4,7 @@ import { Col, Row } from "react-bootstrap";
 import Hospital from "../staging/Hospital";
 import { Vitrectomy } from "../models-3d/Vitrectomy";
 import { OrbitControls } from "@react-three/drei";
+import InteractiveTag from "../utils/InteractiveTag";
 
 
 export default function RdTreatment() {
@@ -17,7 +18,7 @@ export default function RdTreatment() {
               <Suspense fallback={null}>
                 <Vitrectomy />
                 <Hospital />
-
+                <InteractiveTag position={[-20, 0, -20]} text="Se colocan aros para mantener el ojo abierto, se inserta una cánula, entra luz para ver y el vitrector retira el gel vítreo para reparar la retina." />
               </Suspense>
               <OrbitControls />
             </Canvas>

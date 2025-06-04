@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
-import { ModelTag } from "../utils/ModelTag";
 
 export function Vitrectomy(props) {
   const group = useRef();
