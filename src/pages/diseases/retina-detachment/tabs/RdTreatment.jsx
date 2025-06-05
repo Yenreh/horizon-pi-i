@@ -5,6 +5,8 @@ import Hospital from "../staging/Hospital";
 import { Vitrectomy } from "../models-3d/Vitrectomy";
 import { OrbitControls } from "@react-three/drei";
 import InteractiveTag from "../utils/InteractiveTag";
+import FloorHospital from "../staging/FloorHospital";
+import VitrectomyLight from "../lights/VitrectomyLight";
 
 
 export default function RdTreatment() {
@@ -19,6 +21,8 @@ export default function RdTreatment() {
                 <Vitrectomy />
                 <Hospital />
                 <InteractiveTag position={[-20, 0, -20]} text="Se colocan aros para mantener el ojo abierto, se inserta una cánula, entra luz para ver y el vitrector retira el gel vítreo para reparar la retina." />
+                <FloorHospital />
+                <VitrectomyLight />
               </Suspense>
               <OrbitControls />
             </Canvas>
