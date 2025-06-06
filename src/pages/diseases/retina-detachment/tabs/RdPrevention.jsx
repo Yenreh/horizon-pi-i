@@ -1,10 +1,9 @@
-// src/components/RdPrevention/RdPrevention.js
-import React, { useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Col, Row } from "react-bootstrap";
 import * as THREE from "three";
 import HospitalTwo from "../staging/HospitalTwo";
 import SceneContent from "../utils/SceneContent";
+import { Suspense, useState } from "react";
 // import './RdPrevention.css'
 
 // Información de los objetos
