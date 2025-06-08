@@ -7,6 +7,7 @@ import { useThree } from '@react-three/fiber'
 import { Cloud } from '@react-three/drei'
 import Text from "../texts/Text"
 import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
+import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 
 export function Girl(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/girl.glb')
@@ -128,7 +129,7 @@ export function Girl(props) {
         <>
         <Cloud
           position={[0, -2, 4]}
-          opacity={0.7}
+          opacity={0.5}
           segments={50}
           bounds={[5, 5, 2]}
         />

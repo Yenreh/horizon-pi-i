@@ -6,7 +6,7 @@ const TextHtml = () => {
   return (
     <Html
       center
-      position={[-1.4, 1.7, 0]}
+      position={[-1.1, 1.6, 0.5]}
       transform
       distanceFactor={5}
       wrapperClass="title"

@@ -1,5 +1,4 @@
-/* TextHtml.css */
-.info-button {
+.info-button-cataracts {
   padding: 4px 8px;
   font-size: 10px;
   background: transparent;
@@ -11,7 +10,7 @@
   gap: 6px;
 }
 
-.info-box {
+.info-box-cataracts {
   position: absolute;
   top: 120%;
   left: 0;

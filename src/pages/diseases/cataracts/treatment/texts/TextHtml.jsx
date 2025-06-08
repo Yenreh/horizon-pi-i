@@ -16,7 +16,7 @@ const TextHtml = ({ scaleX, posX, posY, posZ }) => {
     >
       <div style={{ position: 'relative', display: 'inline-block' }}>
         <button
-          className="info-button"
+          className="info-button-cataracts"
           onMouseEnter={() => setShowInfo(true)}
           onMouseLeave={() => setShowInfo(false)}
         >
@@ -25,7 +25,7 @@ const TextHtml = ({ scaleX, posX, posY, posZ }) => {
         </button>
 
         {showInfo && (
-          <div className='info-box'
+          <div className='info-box-cataracts'
           >
             👁️ Presiona: <br />
             s - Vista sin tratamiento  <br />

@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import "./definition.css";
+import "../Cataracts.css";
 import "../../Desease.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
@@ -16,11 +16,11 @@ export default function definition() {
             <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
               <LuRotate3D title="Modelo 3D" />
             </div>
-            <Canvas camera={{ position: [0, 1, 3]}} shadows>
+            <Canvas camera={{ position: [0, 0, 3]}} shadows>
               <Suspense fallback={null}>
                 <Title />
                 <Lights />
-                <Eye position={[0, 0, 0]}/>
+                <Eye position={[-0.35, 0, 0]}/>
 
                 <mesh receiveShadow position={[0, -2, 0]} rotation={[-Math.PI / 2, 0, 0]}>
                   <planeGeometry args={[15, 15]} />

@@ -19,7 +19,7 @@ export default function Prevention() {
             <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
               <LuRotate3D title="Modelo 3D" />
             </div>
-            <Canvas camera={{ position: [-0.09, 0.4, 2.5]}} shadows>
+            <Canvas camera={{ position: [-0.05, 0.2, 2.5]}} shadows>
             <KeyboardControls
               map={[
                 { name: 'vitaminC', keys: ['c', 'C'] },
